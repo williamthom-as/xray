@@ -1,0 +1,17 @@
+<template>
+  <div class="key">
+    <div class="pointer" click.delegate="expanded ? (expanded = null) : (expanded = true)">
+      <span class="pointer" if.bind="!expanded">+</span>
+      <span class="pointer" if.bind="expanded">-</span>
+      <span class="title">${key ? key : '(root)'}:</span>
+    </div>
+    <div class="val-cluster" repeat.for="key of struct | objectKeys" if.bind="expanded">
+      <div class="values" if.bind="struct[key] === null || typeof struct[key] !== 'object'">
+        <span class="label">${key}:</span>
+        <span class="properties">${struct[key]}</span>
+      </div>
+
+      <parent struct.bind="struct[key]" key.bind="key" if.bind="typeof struct[key] === 'object' && struct[key] !== null"></parent>
+    </div>
+  </div>
+</template>

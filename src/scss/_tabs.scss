@@ -1,0 +1,38 @@
+.tabs-container {
+
+  .tabs-menu {
+    padding: 0 0 1rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    a {
+      width: 100%;
+      cursor: pointer;
+      
+      font-weight: bold;
+      text-align: center;
+      color: var(--tabs-button-font);
+
+      border-radius: 3px;
+      background-color: var(--tabs-button);
+      padding: 0.5rem;
+
+      &.active {
+        background-color: var(--tabs-button-active);
+        color: rgb(97, 76, 255);
+        cursor: default;
+      }
+
+      &:first-child {
+        margin-right: 0.5rem;
+      }
+
+      &:last-child {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+}
+

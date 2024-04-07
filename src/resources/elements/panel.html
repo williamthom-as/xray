@@ -1,0 +1,17 @@
+<template>
+  <section class="panel" css.bind="panelCss()">
+    <header class="panel-header">
+      <slot name="header">&nbsp</slot>
+      <div class="actions">
+        <span if.bind="actionTwoFunction" click.trigger="actionTwoFunction()"><i class="fas ${actionTwoIcon}"></i></span>
+        <span if.bind="actionOneFunction" click.trigger="actionOneFunction()"><i class="fas ${actionOneIcon}"></i></span>
+        <span if.bind="expanded" click.trigger="expanded = false"><i class="fas fa-chevron-up"></i></span>
+        <span if.bind="!expanded" click.trigger="expanded = true"><i class="fas fa-chevron-down"></i></span>
+      </div>
+    </header>
+    <div class="panel-body" show.bind="expanded">
+      <slot name="body"></slot>
+    </div>
+  </section>
+  <!-- collapseable, title bar, actions -->
+</template>

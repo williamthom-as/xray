@@ -1,0 +1,120 @@
+.toast {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  border-radius: 6px;
+  padding: 1rem 2rem 1rem 1.5rem;
+  background: $green;
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.5);
+  overflow: hidden;
+  z-index: 4001;
+
+  transform: translateY(calc(100% + 1rem));
+  opacity: 0;
+  // transition: opacity 0.5s ease-in;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  &.danger {
+    background: $red;
+
+    .toast-content {
+      .check {
+        color: $red;
+      }
+    }
+
+    .progress {
+      &:before {
+        background-color: $red;
+      }
+    }
+  }
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  .toast-content {
+    display: flex;
+    align-items: center;
+
+    .check {
+      height: 2.2rem;
+      width: 2.2rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $gray-200;
+      color: $green;
+      font-size: 1.4rem;
+      border-radius: 50%;
+    }
+
+    .message {
+      display: flex;
+      flex-direction: column;
+      // align-items: center;
+      margin: 0 1.25rem 0 1rem;
+      max-width: 20rem;
+
+      .title {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #fff;
+        margin-bottom: 0.25rem;
+      }
+
+      .text {
+        font-size: 0.9rem;
+        color: $gray-200;
+      }
+    }
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: $gray-300;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      background-color: $green;
+    }
+
+    &.active {
+      &:before {
+        animation: progress 5s linear forwards;
+      }
+    }
+  }
+}
+
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
+}

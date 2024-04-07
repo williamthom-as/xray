@@ -1,0 +1,32 @@
+.tooltip {
+  --scale: 0;
+
+  &::after,
+  &::before {
+    position: absolute;
+    top: 0.5rem;
+    right: -0.5rem;
+    transform: translateX(100%) translateY(50%) scale(var(--scale));
+    transition: 50ms transform;
+    transform-origin: left center;
+  }
+
+  &::before {
+    content: attr(data-tooltip);
+    background: var(--tooltip-background);
+    color: white;
+    text-align: center;
+    padding: 0.25rem;
+    width: max-content;
+    max-width: 100%;
+    border-radius: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  &:hover {
+    &::before {
+      --scale: 1;
+    }
+  }
+}

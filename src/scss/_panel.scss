@@ -1,0 +1,40 @@
+.panel {
+  width: 100%;
+  border-radius: 0.3rem;
+  background-color: var(--panel-background);
+  overflow-x: auto;
+  margin-bottom: $gutter;
+
+  .panel-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc($gutter / 2) 1rem;
+
+    .title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: 'Noto Sans', sans-serif;
+      color: $green;
+    }
+
+    .actions {
+      cursor: pointer;
+
+      span {
+        color: var(--text-muted);
+
+        &:hover {
+          color: var(--text-primary);
+        }
+      }
+    }
+  }
+
+  .panel-body {
+    padding: calc($gutter / 2) round(calc($gutter * 0.67)) $gutter round(calc($gutter * 0.67));
+  }
+
+}

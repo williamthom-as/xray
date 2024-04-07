@@ -1,0 +1,44 @@
+.box-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1.5rem;
+
+  .box {
+    background: var(--panel-background);
+    padding: 1rem;
+    height: 150px;
+    flex-grow: 1;
+    min-width: 20rem;
+    border-radius: 3px;
+
+    .title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: 'Noto Sans', sans-serif;
+      color: var(--text-secondary);
+    }
+
+    .body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      &.large-text {
+        font-size: 3rem;
+      }
+
+      &.medium-text {
+        font-size: 2rem;
+      }
+
+      &.small-text {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+

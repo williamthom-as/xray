@@ -1,0 +1,14 @@
+<template>
+  <table class="table table-overflow" if.bind="data">
+    <thead>
+      <tr>
+        <th repeat.for="column of data.columns">${column}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr repeat.for="row of data.rows">
+        <td repeat.for="value of row">${value}</td>
+      </tr>
+    </tbody>
+  </table>
+</template>

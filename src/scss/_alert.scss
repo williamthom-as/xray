@@ -1,0 +1,17 @@
+.alert {
+  display: flex;
+  flex-flow: row wrap;
+  color: $gray-200;
+  background-color: $blue;
+  border-radius: 0.3rem;
+  padding: 1rem;
+
+  &.text-center {
+    justify-content: center;
+  }
+
+  &.alert-danger {
+    color: $gray-200;
+    background-color: $red;
+  }
+}

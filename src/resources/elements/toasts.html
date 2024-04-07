@@ -1,0 +1,27 @@
+<template>
+  <div repeat.for="tst of toasts">
+    <div
+      id="toast-${tst.id}"
+      class="toast ${tst.level}"
+      mouseenter.trigger="stopFutureRemove(tst.id)"
+      mouseleave.trigger="tst.level !== 'danger' && setFutureRemove(tst.id)"
+    >
+      <div class="toast-content">
+        <i class="fa fa-exclamation-triangle check" if.bind="tst.level === 'danger'"></i>
+        <i class="fa fa-check check" if.bind="tst.level === 'info'"></i>
+        <div class="message">
+          <span class="title">${tst.title}</span>
+          <span class="text">${tst.message}</span>
+        </div>
+      </div>
+      <div class="close" click.trigger="removeToast(tst.id)">
+        <i class="fa fa-times"></i>
+      </div>
+      <div 
+        class="progress"
+        id="progress-${tst.id}"
+        if.bind="tst.level === 'info'"
+      ></div>
+    </div>
+  </div>
+</template>

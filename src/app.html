@@ -1,0 +1,47 @@
+<template>
+  <require from="./app.scss"></require>
+  <header>
+    <nav class="navbar-sidebar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-project-diagram hero"></i>
+            <div class="link-text">
+              <div class="link-header-text">Cure Viz</div>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item" repeat.for="row of router.navigation">
+          <a class="${row.isActive ? 'active' : ''} nav-link" click.delegate="navigateMenu(row.href)">
+            <i class="${row.settings.icon}"></i>
+            <div class="link-text">${row.title}
+              <div class="sub-link-text">${row.settings.description}</div>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item color-mode">
+          <div class="mode">
+            <div class="ico ${scheme == 'auto' ? 'active' : ''}" click.trigger="changeScheme('auto')">
+              <i class="fas fa-undo"></i>
+            </div>
+            <div class="ico ${scheme == 'dark' ? 'active' : ''}" click.trigger="changeScheme('dark')">
+              <i class="fas fa-moon"></i>
+            </div>
+            <div class="ico ${scheme == 'light' ? 'active' : ''}" click.trigger="changeScheme('light')">
+              <i class="fas fa-sun"></i>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <router-view swap-order="after"></router-view>
+  </main>
+  <footer>
+
+  </footer>
+  <toasts></toasts>
+</template>
+
+

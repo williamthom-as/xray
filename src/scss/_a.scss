@@ -1,0 +1,21 @@
+a {
+  color: $blue;
+  text-decoration: none;
+}
+
+a:link {
+}
+
+a:visited {
+  color: lighten($blue, 10%);
+}
+
+a:focus {
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+}

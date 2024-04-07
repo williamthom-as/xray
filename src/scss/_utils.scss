@@ -1,0 +1,70 @@
+@import 'variables';
+
+// Text manip
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+
+.text-small {
+  font-size: 0.85rem;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table-overflow {
+  overflow-x: auto;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-success, .text-green {
+  color: $green;
+}
+
+.text-danger, .text-red {
+  color: $red;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-1-2 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mono-font {
+  font-family: "JetBrains Mono", sans-serif;
+}
+
+.sans-font {
+  font-family: "Noto Sans", sans-serif;
+}

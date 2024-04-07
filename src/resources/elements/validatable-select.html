@@ -1,0 +1,15 @@
+<template>
+  <div class="form-group">
+      <label class="au-animate ${errors ? 'is-invalid' : ''}">${label}</label>
+      <select if.bind="optionKey" class="form-control ${errors ? 'is-invalid' : ''}" value.bind="value">
+          <option repeat.for="data of values" model.bind="data[optionKey]">${data[optionValue]}</option>
+      </select>
+      <select if.bind="!optionKey" class="form-control ${errors ? 'is-invalid' : ''}" value.bind="value">
+          <option repeat.for="data of values" value="${data}">${data}</option>
+      </select>
+      <div if.bind="helpText"><small>${helpText}</small></div>
+      <div class="errors" if.bind="errors">
+          <span class="text-danger" repeat.for="error of errors">${error}<br if.bind="!$last"></span>
+      </div>
+  </div>
+</template>

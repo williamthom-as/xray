@@ -1,0 +1,61 @@
+<template>
+    <div class="modal">
+      <div class="modal-dialog">        
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title">
+              Add New Dashboard
+            </div>
+          </div>
+          <div class="modal-body">
+            <validatable-select2
+              label="From"
+              values.bind="['text', 'upload', 'github']"
+              value.bind="model.from"
+              errors.bind="errors.from"
+              placeholder="Select a source"
+            >
+            </validatable-select2>
+            <validatable-field
+              placeholder="Name"
+              value.bind="model.name"
+              errors.bind="errors.name"
+              label="Name"
+              type="text">
+            </validatable-field>
+            <validatable-field
+              placeholder="Description"
+              value.bind="model.description"
+              errors.bind="errors.description"
+              label="Description"
+              type="text">
+            </validatable-field>
+
+            <div if.bind="model.from === 'github'">
+              <validatable-field
+                placeholder="Gist Id"
+                value.bind="model.gistId"
+                errors.bind="errors.gistId"
+                label="Gist Id"
+                type="text">
+              </validatable-field>
+            </div>
+            <div if.bind="model.from === 'text'">
+              <validatable-field
+                placeholder="Contents"
+                value.bind="model.content"
+                errors.bind="errors.content"
+                label="Content"
+                type="text">
+              </validatable-field>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-muted btn-y-padding" click.trigger="controller.cancel()">Close</button>
+            <button type="button" class="btn btn-primary btn-y-padding" click.trigger="submit()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>

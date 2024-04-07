@@ -1,0 +1,171 @@
+// Raw colours
+$charcoal:  hsl(225, 9%, 18%);
+$blue:  	hsl(247, 100%, 65%);
+$pink:  	hsl(349, 100%, 72%);
+$night:     hsl(240, 35%, 34%);
+$offwhite:  hsl(229, 44%, 90%);
+
+$red:    hsl(343, 100%, 39%);
+$orange: hsl(13, 100%, 66%);
+$yellow: hsl(60, 92%, 71%);
+$green:  hsl(163, 100%, 35%);
+$cyan:   hsl(203, 100%, 49%);
+
+// Black and white shades
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #868e96;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$gray-950: #14171a;
+$gray-1000: #101215;
+$gray-1100: #111111;
+
+html {
+  --primary-hue: 0;
+  --primary-saturation: 0%;
+  --primary-lightness: 10%;
+
+  // Lite theme
+  --primary-color-light: hsl(var(--primary-hue) var(--primary-saturation) var(--primary-lightness));
+  --primary-text-light: hsl(var(--primary-hue) var(--primary-saturation) 20%);
+  --secondary-text-light: hsl(var(--primary-hue) var(--primary-saturation) 50%);
+
+  --menu-background-light: var(--primary-color-light);
+  --menu-link-hover-light: hsl(var(--primary-hue) calc(var(--primary-saturation) / 2) calc(var(--primary-lightness) / 1.5));
+  --menu-text-color-light: hsl(var(--primary-hue) 50% 95%);
+  --page-background-light: hsl(var(--primary-hue) 20% 95%);
+  --page-background-secondary-light: #ced4da;
+  --text-muted-light: #ced4da;
+
+  --tooltip-background-light: hsl(var(--primary-hue) 50% 2%);
+  --panel-background-light: #fff;
+  --input-background-light: #e9ecef;
+
+  --tabs-button-light: #f8f9fa;
+  --tabs-button-active-light: #e9ecef;
+  --tabs-button-font-light: #868e96;
+
+  // Dark theme
+  --primary-color-dark: hsl(var(--primary-hue) calc(var(--primary-saturation) / 2) calc(var(--primary-lightness) / 1.25));
+  --primary-text-dark: #adb5bd;
+  --secondary-text-dark: #495057;
+  --menu-background-dark: var(--primary-color-light);
+  --menu-link-hover-dark: hsl(var(--primary-hue) calc(var(--primary-saturation) / 2) calc(var(--primary-lightness) / 1.5));
+  --menu-text-color-dark: --primary-text-dark; //hsl(var(--primary-hue) 50% 95%);
+  --page-background-dark: #121212;
+  --page-background-secondary-dark: #343a40;
+  --text-muted-dark: #ced4da;
+
+  --tooltip-background-dark: hsl(var(--primary-hue) 50% 15%);
+  --panel-background-dark: #1a1a1a;
+  --input-background-dark: #14171a;
+
+  --tabs-button-dark: #14171a;
+  --tabs-button-active-dark: #101215;
+  --tabs-button-font-dark: #343a40;
+}
+
+:root {
+  color-scheme: light;
+
+  /* Defaults */
+  --primary: var(--primary-color-light);
+  --primary-text: var(--primary-text-light);
+  --secondary-text: var(--secondary-text-light);
+
+  --menu-background: var(--menu-background-light);
+  --menu-link-hover: var(--menu-link-hover-light);
+  --menu-text-color: var(--menu-text-color-light);
+
+  --page-background: var(--page-background-light);
+  --page-background-secondary: var(--page-background-secondary-light);
+  --text-muted: var(--text-muted-light);
+
+  --tooltip-background: var(--tooltip-background-light);
+  --panel-background: var(--panel-background-light);
+  --input-background: var(--input-background-light);
+
+  --tabs-button: var(--tabs-button-light);
+  --tabs-button-active: var(--tabs-button-active-light);
+  --tabs-button-font: var(--tabs-button-font-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --primary: var(--primary-color-dark);
+    --primary-text: var(--primary-text-dark);
+    --secondary-text: var(--secondary-text-dark);
+
+    --menu-background: var(--menu-background-dark);
+    --menu-link-hover: var(--menu-link-hover-dark);
+    --menu-text-color: var(--menu-text-color-dark);
+
+    --page-background: var(--page-background-dark);
+    --page-background-secondary: var(--page-background-secondary-dark);
+    --text-muted: var(--text-muted-dark);
+
+    --tooltip-background: var(--tooltip-background-dark);
+    --panel-background: var(--panel-background-dark);
+    --input-background: var(--input-background-dark);
+
+    --tabs-button: var(--tabs-button-dark);
+    --tabs-button-active: var(--tabs-button-active-dark);
+    --tabs-button-font: var(--tabs-button-font-dark);
+  }
+}
+
+[color-scheme="light"] {
+  color-scheme: light;
+
+  --primary: var(--primary-color-light);
+  --primary-text: var(--primary-text-light);
+  --secondary-text: var(--secondary-text-light);
+
+  --menu-background: var(--menu-background-light);
+  --menu-link-hover: var(--menu-link-hover-light);
+  --menu-text-color: var(--menu-text-color-light);
+
+  --page-background: var(--page-background-light);
+  --page-background-secondary: var(--page-background-secondary-light);
+  --text-muted: var(--text-muted-light);
+
+  --tooltip-background: var(--tooltip-background-light);
+  --panel-background: var(--panel-background-light);
+  --input-background: var(--input-background-light);
+
+  --tabs-button: var(--tabs-button-light);
+  --tabs-button-active: var(--tabs-button-active-light);
+  --tabs-button-font: var(--tabs-button-font-light);
+}
+
+[color-scheme="dark"] {
+  color-scheme: dark;
+
+  --primary: var(--primary-color-dark);
+  --primary-text: var(--primary-text-dark);
+  --secondary-text: var(--secondary-text-dark);
+
+  --menu-background: var(--menu-background-dark);
+  --menu-link-hover: var(--menu-link-hover-dark);
+  --menu-text-color: var(--menu-text-color-dark);
+
+  --page-background: var(--page-background-dark);
+  --page-background-secondary: var(--page-background-secondary-dark);
+  --text-muted: var(--text-muted-dark);
+
+  --tooltip-background: var(--tooltip-background-dark);
+  --panel-background: var(--panel-background-dark);
+  --input-background: var(--input-background-dark);
+
+  --tabs-button: var(--tabs-button-dark);
+  --tabs-button-active: var(--tabs-button-active-dark);
+  --tabs-button-font: var(--tabs-button-font-dark);
+}

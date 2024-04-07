@@ -1,0 +1,171 @@
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+input {
+  width: 100%;
+  margin-top: 0.5rem;
+  border: 1px solid var(--input-background);
+  border-radius: 3px;
+  padding: 0.5rem;
+  // background-color: var(--input-background);
+  color: var(--text-primary);
+
+  &::placeholder {
+    font-size: 0.85rem;
+  }
+
+  &.is-invalid {
+    border-color: $red;
+  }
+}
+
+input[type=file] {
+  border: none;
+  margin: 0.5rem 0;
+}
+
+select {
+  appearance: none;
+  color: var(--text-primary);
+  background-color: var(--input-background);
+  border: 1px solid var(--input-background);
+  border-radius: 3px;
+
+  padding: 0.25rem;
+  width: 100%;
+  // font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+
+  &.is-invalid {
+    border-color: $red;
+  }
+}
+
+.select2-container--default {
+  margin: 0.5rem 0;
+}
+
+.select2-selection__clear {
+  color: $red;
+}
+
+.select2-container .select2-selection--single {
+  height: 36px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: var(--text-primary);
+  padding-top: 0.25rem;
+}
+
+.select2-dropdown,
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple,
+.select2-container--default.select2-container--focus .select2-selection--single,
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border: 1px solid $gray-300;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 36px;
+}
+
+.select2-search__field {
+  margin-bottom: 0;
+}
+
+.select2-results {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.errors {
+  span {
+    font-size: 0.85rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+.form-inline {
+  display: flex;
+  flex-flow: row nowrap;
+
+  > * {
+    padding: 0.5rem;
+    width: 100%;
+  }
+}
+
+// Form Builder section, to move to seperate scss file if it pollutes too much
+
+section.form-section {
+  $gutter: 0.5rem;
+  
+  margin-bottom: calc($gutter * 4);
+
+  // > h1, h2, h3, h4, h5, h6 {
+  //   padding-bottom: $gutter;
+  //   margin-bottom: calc($gutter * 2);
+  //   border-bottom: 1px solid $gray-300;
+  // }
+
+  .action-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+
+    padding: $gutter;
+    margin: $gutter 0;
+
+    border-radius: 3px;
+
+    &.solid {
+      background-color: $gray-100;
+
+      &.darker {
+        background-color: darken($gray-100, 5%);
+      }
+    }
+
+    > h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+  }
+
+  .button-group {
+    text-align: right;
+  }
+
+  .rules-container {
+    margin: 0 0 0 1rem;
+    // border-bottom: 1px solid $gray-300;
+
+    > h1, h2, h3, h4, h5, h6 {
+      border: none;
+    }
+
+    .rules-block {
+      // background-color: $gray-100;
+      border-left: 2px solid $gray-100;
+      padding: 0 0 calc($gutter * 2) calc($gutter * 2);
+
+      &:hover {
+        border-left: 2px solid $green;
+      }
+    }
+
+    &.no-margin {
+      margin: 0;
+    }
+  }
+}

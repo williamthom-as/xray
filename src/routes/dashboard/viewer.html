@@ -1,0 +1,46 @@
+<template>
+  <require from="./components/dyn-table"></require>
+
+  <div class="page-header">
+    <div class="title">
+      Viewing Dashboard - ${dashboard.name ? dashboard.name : 'unknown'}
+      <div class="text-small text-secondary" if.bind="dashboard.description">
+        ${dashboard.description}
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn btn-primary btn-outline mono-font" click.trigger="reload()" if.bind="dashboard">
+        <i class="fas fa-sync"></i> Reload
+      </button>
+      <a href="https://github.com/williamthom-as/cure/tree/main/docs" target="_blank">
+        Help <i class="fas fa-question-circle" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <spinner if.bind="isProcessing"></spinner>
+    <div class="col" if.bind="content">
+      <h2>${content.title}</h2>
+      <div class="text-small text-secondary">
+        ${content.description}
+      </div>
+    </div>
+  </div>
+  <div class="tile-container" if.bind="content.panels">
+    <div class="tile" repeat.for="panel of content.panels">
+      <panel>
+        <div slot="header">
+          <div class="title">${panel.title}</div>
+        </div>
+        <div slot="body">
+          <div if.bind="panel.widgetType == 'markdown'">
+            <div innerhtml.bind="panel.data.content"></div>
+          </div>
+          <div if.bind="panel.widgetType == 'table'">
+            <dyn-table data.bind="panel.data"></div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</template>

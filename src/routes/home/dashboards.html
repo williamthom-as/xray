@@ -1,0 +1,51 @@
+<template>
+  <spinner if.bind="isProcessing"></spinner>
+  <table class="table table-overflow" if.bind="dashboards">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr repeat.for="dashboard of dashboards" if.bind="dashboard">
+        <td>
+          <div>
+            <a route-href="route: dashboard-viewer; params.bind: { id: dashboard.id }">
+              ${dashboard.name ? dashboard.name : 'unknown'}
+            </a>
+          </div>
+          <span class="text-small text-secondary" if.bind="dashboard.description">${dashboard.description}</span>
+          <span class="text-small text-secondary" else>No description given</span>
+        </td>
+        <td>
+          <span class="badge badge-primary" if.bind="dashboard.from == 'github'">Gist</span>
+          <span class="badge badge-primary" else>Persisted</span>
+        </td>
+        <td>
+          <div>
+            ${dashboard.createdAt | timeAgo }
+          </div>
+          <span class="text-small text-secondary">
+            ${dashboard.updatedAt}
+          </span>
+        </td>
+        <td class="text-right">
+          <button type="button" class="btn btn-primary btn-outline btn-sm" click.trigger="navigateToRoute(dashboard.id)">
+            <i class="fas fa-folder-open"></i> Open
+          </button>
+          <button type="button" class="btn btn-danger btn-outline btn-sm" click.trigger="removeDashboard(dashboard.id)">
+            <i class="fas fa-times"></i> Remove
+          </button>
+        </td>
+      </tr>
+      <tr if.bind="!dashboards">
+        <td colspan="4" class="text-center">
+          You do not have any stored dashboards.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>
