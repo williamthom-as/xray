@@ -16,21 +16,6 @@
               placeholder="Select a source"
             >
             </validatable-select2>
-            <validatable-field
-              placeholder="Name"
-              value.bind="model.name"
-              errors.bind="errors.name"
-              label="Name"
-              type="text">
-            </validatable-field>
-            <validatable-field
-              placeholder="Description"
-              value.bind="model.description"
-              errors.bind="errors.description"
-              label="Description"
-              type="text">
-            </validatable-field>
-
             <div if.bind="model.from === 'github'">
               <validatable-field
                 placeholder="Gist Id"

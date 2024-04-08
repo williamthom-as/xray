@@ -3,9 +3,9 @@
   <table class="table table-overflow" if.bind="dashboards">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Type</th>
+        <th>Title</th>
         <th>Date</th>
+        <th>Type</th>
         <th></th>
       </tr>
     </thead>
@@ -14,15 +14,11 @@
         <td>
           <div>
             <a route-href="route: dashboard-viewer; params.bind: { id: dashboard.id }">
-              ${dashboard.name ? dashboard.name : 'unknown'}
+              ${dashboard.content.title ? dashboard.content.title : 'unknown'}
             </a>
           </div>
-          <span class="text-small text-secondary" if.bind="dashboard.description">${dashboard.description}</span>
+          <span class="text-small text-secondary" if.bind="dashboard.content.description">${dashboard.content.description}</span>
           <span class="text-small text-secondary" else>No description given</span>
-        </td>
-        <td>
-          <span class="badge badge-primary" if.bind="dashboard.from == 'github'">Gist</span>
-          <span class="badge badge-primary" else>Persisted</span>
         </td>
         <td>
           <div>
@@ -31,6 +27,10 @@
           <span class="text-small text-secondary">
             ${dashboard.updatedAt}
           </span>
+        </td>
+        <td>
+          <span class="badge badge-primary" if.bind="dashboard.from == 'github'">Gist</span>
+          <span class="badge badge-primary" else>Persisted</span>
         </td>
         <td class="text-right">
           <button type="button" class="btn btn-primary btn-outline btn-sm" click.trigger="navigateToRoute(dashboard.id)">

@@ -19,6 +19,11 @@ export class Viewer {
 
   activate(params) {
     this.id = params.id;
+
+    console.log(params);
+    // TODO: if the ID is remote -> create a synthentic dashboard
+    // and load the contents. Offer a button to save.
+
     this.getDashboard();
   }
 
@@ -28,25 +33,22 @@ export class Viewer {
       .then(dashboard => {
         this.dashboard = dashboard;
 
-        if (force && dashboard.from == "github") {
-          dashboard.content = null;
+        if (force && this.dashboard.from == "github") {
+          this.dashboard.content = null;
         }
         
-        if (dashboard.content) {
+        if (this.dashboard.content) {
           console.log("Loading content from Local Storage");
-          this.content = JSON.parse(dashboard.content);
+          this.content = dashboard.content;
         } else {
           console.log("Fetching content from Github");
-          this.github.getGist(dashboard.gistId)
+          this.github.getGist(this.dashboard.gistId)
             .then(gist => {
-              console.log(gist);
+              this.content = JSON.parse(gist.files[Object.keys(gist.files)[0]].content)
+              this.dashboard.content = this.content;
+              this.dashboard.updatedAt = new Date();
 
-              this.content = gist.files[Object.keys(gist.files)[0]].content;
-
-              dashboard.content = this.content;
-              dashboard.updatedAt = new Date();
-
-              this.storageService.updateDashboard(dashboard);
+              this.storageService.updateDashboard(this.dashboard);
             });
         }
 
