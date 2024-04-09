@@ -7,6 +7,8 @@ export function configure(config) {
     './value-converters/json.js',
     './value-converters/time-ago.js',
     './value-converters/filter-by.js',
+    './value-converters/date.js',
+    './value-converters/date-time.js',
     './elements/horizontal-nav',
     './elements/parent',
     './elements/panel',

@@ -25,7 +25,7 @@
             ${dashboard.createdAt | timeAgo }
           </div>
           <span class="text-small text-secondary">
-            ${dashboard.updatedAt}
+            ${dashboard.updatedAt | dateTime }
           </span>
         </td>
         <td>
@@ -34,10 +34,10 @@
         </td>
         <td class="text-right">
           <button type="button" class="btn btn-primary btn-outline btn-sm" click.trigger="navigateToRoute(dashboard.id)">
-            <i class="fas fa-folder-open"></i> Open
+            <i class="fas fa-folder-open"></i>
           </button>
           <button type="button" class="btn btn-danger btn-outline btn-sm" click.trigger="removeDashboard(dashboard.id)">
-            <i class="fas fa-times"></i> Remove
+            <i class="fas fa-trash"></i>
           </button>
         </td>
       </tr>

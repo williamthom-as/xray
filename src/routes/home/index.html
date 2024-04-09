@@ -12,6 +12,17 @@
   </div>
   <div class="row">
     <div class="col">
+      <panel>
+        <div slot="header">
+          <div class="title">Welcome!</div>
+        </div>
+        <div slot="body">
+        </div>
+      </panel>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <panel
         show-header.bind="true"
         action-one-function.call="reload()"
@@ -24,15 +35,6 @@
         </div>
         <div slot="body">
           <dashboards></dashboards>
-        </div>
-      </panel>
-    </div>
-    <div class="col">
-      <panel>
-        <div slot="header">
-          <div class="title">Welcome!</div>
-        </div>
-        <div slot="body">
         </div>
       </panel>
     </div>
