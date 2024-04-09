@@ -20,9 +20,26 @@ export class Viewer {
   activate(params) {
     this.id = params.id;
 
-    console.log(params);
-    // TODO: if the ID is remote -> create a synthentic dashboard
-    // and load the contents. Offer a button to save.
+    if (!this.id) {
+      this.router.navigateToRoute('dashboard');
+      return;
+    }
+
+    if (this.id == "remote") {
+      if (params.gistId) {
+        this.loadDashboardFromGist(params.gistId);
+        return;
+      }
+  
+      if (params.encoded) {
+        this.loadDashboardFromEncoded(params.encoded);
+        return;
+      }
+
+      this.router.navigateToRoute('dashboard');
+      // Flash error message
+      return;
+    }
 
     this.getDashboard();
   }
@@ -61,5 +78,46 @@ export class Viewer {
     this.content = null;
 
     this.getDashboard(true);
+  }
+
+  loadDashboardFromGist(gistId) {
+    this.isProcessing = true;
+
+    this.dashboard = {
+      id: "remote",
+      gistId: gistId,
+      from: "github",
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    this.github.getGist(this.dashboard.gistId)
+      .then(gist => {
+        this.content = JSON.parse(gist.files[Object.keys(gist.files)[0]].content)
+        this.dashboard.content = this.content;
+
+        this.isProcessing = false;
+      });
+  }
+
+  loadDashboardFromEncoded(encoded) {
+    console.log("here", encoded);
+
+    this.isProcessing = true;
+
+    this.dashboard = {
+      id: "remote",
+      from: "text",
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    console.log(this.dashboard, JSON.parse(atob(encoded)));
+
+
+    this.content = JSON.parse(atob(encoded));
+    this.dashboard.content = this.content;
+
+    this.isProcessing = false;
   }
 }

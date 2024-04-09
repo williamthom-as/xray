@@ -4,13 +4,16 @@
   <div if.bind="content">
     <div class="page-header">
       <div class="title">
-        Viewing Dashboard - ${content.title ? content.title : 'unknown'}
+        ${content.title ? content.title : 'unknown'}
         <div class="text-small text-secondary" if.bind="content.description">
           ${content.description ? content.description : 'No description given'}
         </div>
       </div>
       <div class="actions">
-        <button type="button" class="btn btn-primary btn-outline mono-font" click.trigger="reload()" if.bind="content">
+        <button type="button" class="btn btn-secondary btn-outline mono-font" click.trigger="reload()" if.bind="dashboard.id === 'remote'">
+          <i class="fas fa-save"></i> Save
+        </button>
+        <button type="button" class="btn btn-default btn-outline mono-font" click.trigger="reload()" if.bind="content && dashboard.id != 'remote'">
           <i class="fas fa-sync"></i> Reload
         </button>
         <a href="https://github.com/williamthom-as/cure/tree/main/docs" target="_blank">
@@ -20,7 +23,7 @@
     </div>
   
     <div class="tile-container" if.bind="content.panels">
-      <div class="tile" repeat.for="panel of content.panels">
+      <div class="tile ${panel.options.widthClass ? panel.options.widthClass : ''}" repeat.for="panel of content.panels">
         <panel>
           <div slot="header">
             <div class="title">${panel.title}</div>
@@ -30,8 +33,10 @@
               <div innerhtml.bind="panel.data.content"></div>
             </div>
             <div if.bind="panel.widgetType == 'table'">
-              <dyn-table data.bind="panel.data"></div>
+              <dyn-table data.bind="panel.data"></dyn-table>
             </div>
+            <div if.bind="panel.widgetType == 'bar-chart'">
+              <bar-chart labels.bind="panel.data.labels" data.bind="panel.data.data" options.bind="panel.data.options"></bar-chart>
           </div>
         </panel>
       </div>

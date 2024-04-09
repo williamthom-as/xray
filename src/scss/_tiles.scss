@@ -6,11 +6,12 @@ $double-tile-min-width: 40rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 (-$tile-margin);
+  margin: (-$tile-margin) (-$tile-margin) 0;
 
   .tile {
     flex: 1 0 $tile-min-width;
-    margin: $tile-margin;
+    margin: $tile-margin $tile-margin 0 $tile-margin;
+    // max-width: 60rem;
 
     box-sizing: border-box;
     //text-align: center;
@@ -18,6 +19,10 @@ $double-tile-min-width: 40rem;
 
     &.double {
       flex: 2 0 $double-tile-min-width;
+    }
+
+    &.full {
+      flex: 1 0 calc(100% - $tile-margin * 4);
     }
 
     &.with-bg {

@@ -50,6 +50,16 @@
       }
     }
   
+    &.btn-secondary {
+      background-color: transparent;
+      color: $blue;
+      box-shadow: none;
+
+      &:hover {
+        background-color: $blue;
+      }
+    }  
+
     &.btn-danger {
       background-color: transparent;
       color: $red;
@@ -57,6 +67,16 @@
 
       &:hover {
         background-color: $red;
+      }
+    }
+
+    &.btn-default {
+      background-color: transparent;
+      color: $gray-700;
+      box-shadow: none;
+
+      &:hover {
+        background-color: $gray-700;
       }
     }
   }
