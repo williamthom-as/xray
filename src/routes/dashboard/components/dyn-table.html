@@ -1,14 +1,38 @@
 <template>
-  <table class="table table-overflow" if.bind="data">
+  <div class="filter-bar" style="width: 24rem; margin-bottom: 0.5rem;">
+    <validatable-field
+      placeholder="Search ..."
+      value.bind="filter & debounce:500"
+      type="text">
+    </validatable-field>
+  </div>
+  <table class="table table-overflow" if.bind="rows">
     <thead>
       <tr>
-        <th repeat.for="column of data.columns">${column}</th>
+        <th class="sortable" repeat.for="column of columns" click.trigger="sort(column)">
+          ${column}
+          <i class="fas fa-caret-${sortAsc ? 'up' : 'down'}" if.bind="sortableColumn == column"></i>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr repeat.for="row of data.rows">
+      <tr repeat.for="row of pagedResult">
+        <!-- <td repeat.for="value of row" innerHTML.bind="highlight(value)"></td> -->
         <td repeat.for="value of row">${value}</td>
       </tr>
     </tbody>
   </table>
+  <div class="pagination-footer">
+    <div class="actions-tray">
+      <button type="button" class="btn btn-default btn-outline btn-sm" click.trigger="prevPage()" disabled.bind="!hasPrevPage">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button type="button" class="btn btn-default btn-outline btn-sm" click.trigger="nextPage()" disabled.bind="!hasNextPage">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="pagination-stats">
+      Showing ${offset + 1} - ${offset + max} of ${rows.length}
+    </div>
+  </div>
 </template>

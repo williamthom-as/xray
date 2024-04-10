@@ -14,23 +14,27 @@
     text-transform: uppercase;
     font-size: 0.85rem;
     color: var(--text-secondary);
-    padding: 0.5rem;
+    padding: 0.25rem 0.5rem;
 
     &:first-child {
-      padding-left: 0;
+      // padding-left: 0;
     }
   
     &:last-child {
       padding-right: 0;
     }
+
+    &.sortable {
+      cursor: pointer;
+    }
   }
 
   td {
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 0.5rem;
 
     &:first-child {
-      padding-left: 0;
+      // padding-left: 0;
     }
   
     &:last-child {
@@ -41,4 +45,27 @@
       max-width: 4rem;
     }
   }
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        background-color: var(--table-background);
+      }
+    }
+  }
+}
+
+.pagination-footer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.highlight-text {
+  font-weight: 600;
+  text-decoration: underline;
 }

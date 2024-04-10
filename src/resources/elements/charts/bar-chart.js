@@ -15,7 +15,8 @@ export class BarChart {
   
   attached() {
     this.updateChart();
-
+    this.resizeHandler = this.resizeHandler.bind(this);
+    
     window.addEventListener('resize', this.resizeHandler, { once: true });
   }
 

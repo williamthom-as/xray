@@ -40,6 +40,9 @@ html {
   --menu-link-hover-light: hsl(var(--primary-hue) calc(var(--primary-saturation) / 2) calc(var(--primary-lightness) / 1.5));
   --menu-text-color-light: hsl(var(--primary-hue) 50% 95%);
   --page-background-light: hsl(var(--primary-hue) 20% 95%);
+
+  --table-background-light: hsl(var(--primary-hue) 20% 98%);
+
   --page-background-secondary-light: #ced4da;
   --text-muted-light: #ced4da;
 
@@ -59,6 +62,10 @@ html {
   --menu-link-hover-dark: hsl(var(--primary-hue) calc(var(--primary-saturation) / 2) calc(var(--primary-lightness) / 1.5));
   --menu-text-color-dark: --primary-text-dark; //hsl(var(--primary-hue) 50% 95%);
   --page-background-dark: #121212;
+
+  --table-background-dark: #14171a;
+
+
   --page-background-secondary-dark: #343a40;
   --text-muted-dark: #ced4da;
 
@@ -85,6 +92,8 @@ html {
 
   --page-background: var(--page-background-light);
   --page-background-secondary: var(--page-background-secondary-light);
+
+  --table-background: var(--table-background-light);
   --text-muted: var(--text-muted-light);
 
   --tooltip-background: var(--tooltip-background-light);
@@ -110,6 +119,8 @@ html {
 
     --page-background: var(--page-background-dark);
     --page-background-secondary: var(--page-background-secondary-dark);
+
+    --table-background: var(--table-background-dark);
     --text-muted: var(--text-muted-dark);
 
     --tooltip-background: var(--tooltip-background-dark);
@@ -135,6 +146,7 @@ html {
 
   --page-background: var(--page-background-light);
   --page-background-secondary: var(--page-background-secondary-light);
+  --table-background: var(--table-background-light);
   --text-muted: var(--text-muted-light);
 
   --tooltip-background: var(--tooltip-background-light);
@@ -159,6 +171,7 @@ html {
 
   --page-background: var(--page-background-dark);
   --page-background-secondary: var(--page-background-secondary-dark);
+  --table-background: var(--table-background-dark);
   --text-muted: var(--text-muted-dark);
 
   --tooltip-background: var(--tooltip-background-dark);
