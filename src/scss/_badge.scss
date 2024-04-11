@@ -1,0 +1,25 @@
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.4rem;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: $gray-900;
+  color: #fff;
+  font-family: 'Noto Sans', sans-serif;
+
+  &.badge-sm {
+    font-size: 75%;
+  }
+
+  &.badge-primary {
+    background-color: $blue;
+  }
+
+  &.badge-secondary {
+    background-color: $cyan;
+  }
+}

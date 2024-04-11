@@ -2,7 +2,7 @@ import {inject, bindable} from 'aurelia-framework';
 import {DialogService} from 'aurelia-dialog-lite';
 import {Router} from 'aurelia-router';
 
-@inject(Router, DialogService, 'LocalStorageService', 'GithubService')
+@inject(Router, DialogService, 'AppService', 'LocalStorageService', 'GithubService')
 export class Viewer {
 
   @bindable dashboard = null;
@@ -10,20 +10,16 @@ export class Viewer {
 
   isProcessing = false;
 
-  constructor(router, dialogService, storageService, githubService) {
+  constructor(router, dialogService, appService, storageService, githubService) {
     this.router = router;
     this.dialogService = dialogService;
     this.storageService = storageService;
     this.github = githubService;
+    this.app = appService;
   }
 
   activate(params) {
     this.id = params.id;
-
-    if (!this.id) {
-      this.router.navigateToRoute('dashboard');
-      return;
-    }
 
     if (this.id == "remote") {
       if (params.gistId) {
@@ -36,8 +32,12 @@ export class Viewer {
         return;
       }
 
-      this.router.navigateToRoute('dashboard');
-      // Flash error message
+      this.router.navigateToRoute('home');
+      this.app.showError(
+        'Error!', 
+        'Missing mandatory parameter gistId or encoded. See docs for further info.'
+      );
+
       return;
     }
 
@@ -46,6 +46,7 @@ export class Viewer {
 
   getDashboard(force = false) {
     this.isProcessing = true;
+
     this.storageService.getDashboard(this.id)
       .then(dashboard => {
         this.dashboard = dashboard;
@@ -56,9 +57,11 @@ export class Viewer {
         
         if (this.dashboard.content) {
           console.log("Loading content from Local Storage");
+
           this.content = dashboard.content;
         } else {
           console.log("Fetching content from Github");
+
           this.github.getGist(this.dashboard.gistId)
             .then(gist => {
               this.content = JSON.parse(gist.files[Object.keys(gist.files)[0]].content)
@@ -70,6 +73,10 @@ export class Viewer {
         }
 
         this.isProcessing = false;
+      })
+      .catch(error => {
+        this.router.navigateToRoute('home');
+        this.app.showError('Problem retrieving Dashboard', error);
       });
   }
 
@@ -84,9 +91,9 @@ export class Viewer {
     this.isProcessing = true;
 
     this.dashboard = {
-      id: "remote",
+      id: 'remote',
+      from: 'github',
       gistId: gistId,
-      from: "github",
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
@@ -97,26 +104,32 @@ export class Viewer {
         this.dashboard.content = this.content;
 
         this.isProcessing = false;
+      })
+      .catch((error) => {
+        this.router.navigateToRoute('home');
+        this.app.showError('Problem retrieving Gist', error);
       });
   }
 
   loadDashboardFromEncoded(encoded) {
-    console.log("here", encoded);
-
     this.isProcessing = true;
 
     this.dashboard = {
-      id: "remote",
-      from: "text",
+      id: 'remote',
+      from: 'text',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
 
-    console.log(this.dashboard, JSON.parse(atob(encoded)));
-
-
-    this.content = JSON.parse(atob(encoded));
-    this.dashboard.content = this.content;
+    try {
+      this.content = JSON.parse(atob(encoded));
+      this.dashboard.content = this.content;
+    } catch (error) {
+      this.router.navigateToRoute('home');
+      this.app.showError('Problem decoding content', error);
+      
+      return
+    }
 
     this.isProcessing = false;
   }

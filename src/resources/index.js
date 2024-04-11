@@ -18,6 +18,6 @@ export function configure(config) {
     './elements/toasts',
     './elements/spinner',
     './elements/prism-code',
-    './elements/charts/bar-chart',
+    './elements/charts/data-chart',
   ]);
 }

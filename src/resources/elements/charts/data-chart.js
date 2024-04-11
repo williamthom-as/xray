@@ -8,9 +8,10 @@ import Chart from 'chart.js/auto'
     </div>
   </template>
 `)
-export class BarChart {
+export class DataChart {
   @bindable labels;
   @bindable data;
+  @bindable chartType;
   @bindable options;
   
   attached() {

@@ -22,9 +22,15 @@ export class LocalStorageService {
     return new Promise((resolve, reject) => {
       this.getDashboards()
         .then(dashboards => {
-          resolve(dashboards.find(d => d.id === id));
+          const dashboard = dashboards.find(d => d.id === id);
+
+          if (!dashboard) {
+            reject(new Error(`No dashboard found with the id - '${id}'`));
+          }
+
+          resolve(dashboard);
         })
-        .catch(error => reject(error));
+        .catch((error) => reject(error));
     });
   }
 

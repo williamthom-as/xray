@@ -20,6 +20,10 @@
     .toast-content {
       .check {
         color: $red;
+
+        &::before {
+          margin-bottom: 0.25rem;
+        }
       }
     }
 

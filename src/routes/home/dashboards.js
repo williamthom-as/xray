@@ -1,15 +1,17 @@
 import {inject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import {Router} from 'aurelia-router';
 
-@inject(EventAggregator, 'AppService', 'LocalStorageService')
+@inject(Router, EventAggregator, 'AppService', 'LocalStorageService')
 export class Dashboards {
 
   isProcessing = false;
   dashboards = null;
 
-  constructor(ea, app, storageService) {
+  constructor(router, ea, app, storageService) {
     this.ea = ea;
     this.app = app;
+    this.router = router;
     this.storageService = storageService;
 
     this.getDashboards = this.getDashboards.bind(this);
@@ -45,6 +47,10 @@ export class Dashboards {
       .catch(error => {
         this.app.showError("Error!", error);
       });
+  }
+
+  navigateToDashboard(dashboard) {
+    this.router.navigateToRoute('dashboard-viewer', { id: dashboard.id });
   }
 
 }

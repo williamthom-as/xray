@@ -7,7 +7,8 @@ export class GithubService {
       fetch(gistUrl)
         .then(response => {
           if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
+            console.log(response);
+            throw new Error(`Code: [${response.status}]`);
           }
 
           return response.json();
