@@ -10,7 +10,7 @@ import Chart from 'chart.js/auto'
 `)
 export class DataChart {
   @bindable labels;
-  @bindable data;
+  @bindable values;
   @bindable chartType;
   @bindable options;
   
@@ -36,16 +36,14 @@ export class DataChart {
   updateChart() {
     this.destroyChart();
     
-    console.log(this.options);
-
     this.chart = new Chart(this.canvas, {
       type: this.chartType || "line",
       data: {
         labels: this.labels,
         datasets: [
           {
-            label: this.options?.chartTitle || "No title",
-            data: this.data
+            label: this.options?.chart_title || "No title",
+            data: this.values
           }
         ]
       },

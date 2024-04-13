@@ -48,7 +48,7 @@
 
   tbody {
     tr {
-      &:nth-child(odd) {
+      &:nth-child(even) {
         background-color: var(--table-background);
       }
     }
