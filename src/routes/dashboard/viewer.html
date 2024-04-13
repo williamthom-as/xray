@@ -33,13 +33,13 @@
               <dyn-table rows.bind="panel.data.rows" columns.bind="panel.data.columns"></dyn-table>
             </div>
             <div if.bind="panel.widgetType == 'bar-chart'">
-              <data-chart labels.bind="panel.data.labels" data.bind="panel.data.data" options.bind="panel.data.options" type.bind="bar"></data-chart>
+              <data-chart labels.bind="panel.data.labels" data.bind="panel.data.data" options.bind="panel.data.options" chart-type="bar"></data-chart>
             </div>
             <div if.bind="panel.widgetType == 'pie-chart'">
-              <data-chart labels.bind="panel.data.labels" data.bind="panel.data.data" options.bind="panel.data.options" type.bind="pie"></data-chart>
+              <data-chart labels.bind="panel.data.labels" data.bind="panel.data.data" options.bind="panel.data.options" chart-type="pie"></data-chart>
             </div>
             <div if.bind="panel.widgetType == 'line-chart'">
-              <data-chart labels.bind="panel.data.labels" data.bind="panel.data.data" options.bind="panel.data.options" type.bind="line"></data-chart>
+              <data-chart labels.bind="panel.data.labels" data.bind="panel.data.data" options.bind="panel.data.options" chart-type="line"></data-chart>
             </div>
           </div>
         </panel>

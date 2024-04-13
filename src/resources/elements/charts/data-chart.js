@@ -39,7 +39,7 @@ export class DataChart {
     console.log(this.options);
 
     this.chart = new Chart(this.canvas, {
-      type: 'bar',
+      type: this.chartType || "line",
       data: {
         labels: this.labels,
         datasets: [
