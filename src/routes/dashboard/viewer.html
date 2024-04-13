@@ -20,7 +20,7 @@
     </div>
   
     <section class="tile-container" if.bind="content.panels">
-      <div class="tile ${panel.options.widthClass ? panel.options.width_class : ''}" repeat.for="panel of content.panels">
+      <div class="tile ${panel.options.width_class ? panel.options.width_class : ''}" repeat.for="panel of content.panels">
         <panel>
           <div slot="header">
             <div class="title">${panel.title}</div>
