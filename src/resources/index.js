@@ -19,5 +19,6 @@ export function configure(config) {
     './elements/spinner',
     './elements/prism-code',
     './elements/charts/data-chart',
+    './elements/logo',
   ]);
 }

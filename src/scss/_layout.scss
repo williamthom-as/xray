@@ -28,7 +28,7 @@ body {
   }
 }
 
-$navbar-width: 5rem;
+$navbar-width: 5.25rem;
 $gutter: 1.5rem;
 
 main {
@@ -98,16 +98,21 @@ nav {
             margin: 0 1.5rem;
             text-align: center;
             transition: font-size $transition-time ease;
+          }
 
-            &.hero {
-              color: $night;
-            }
+          & svg {
+            width: 2.5rem;
+            min-width: 2.5rem;
+            margin: 1.75rem 1rem 1rem 1.25rem;
+            text-align: center;
+            transition: font-size $transition-time ease;
           }
 
           .link-text {
             transition: opacity $transition-time ease-out;
             transition-delay: $popout-time;
 
+            margin-top: 0.5rem;
             opacity: 0;
             height: 0;
             overflow: hidden;

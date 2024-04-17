@@ -1,7 +1,15 @@
+.table-container {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  overflow-x: auto;
+}
+
 .table {
-  width: 100%;
   padding: 0 0rem 0.5rem;
   border-collapse: collapse;
+  font-family: 'Noto Sans', sans-serif;
+
+  width: 100%;
 
   &.table-thin {
     td {
@@ -15,6 +23,9 @@
     font-size: 0.85rem;
     color: var(--text-secondary);
     padding: 0.25rem 0.5rem;
+    word-wrap: break-word;
+    font-family: 'JetBrains Mono',sans-serif;
+
 
     &:first-child {
       // padding-left: 0;

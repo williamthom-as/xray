@@ -1,28 +1,30 @@
 <template>
-  <div class="filter-bar" style="width: 24rem; margin-bottom: 0.5rem;">
+  <div class="filter-bar" style="width: 24rem; margin-bottom: 1rem;">
     <validatable-field
       placeholder="Search ..."
       value.bind="filter & debounce:200"
       type="text">
     </validatable-field>
   </div>
-  <table class="table table-overflow" if.bind="rows">
-    <thead>
-      <tr>
-        <th class="sortable" repeat.for="column of columns" click.trigger="sort(column)">
-          ${column}
-          <i class="fas fa-caret-${sortAsc ? 'up' : 'down'}" if.bind="sortableColumn == column"></i>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr repeat.for="row of pagedResult">
-        <!-- This works, but I don't want it yet... or do I? -->
-        <!-- <td repeat.for="value of row" innerHTML.bind="highlight(value)"></td> -->
-        <td repeat.for="value of row">${value}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table class="table table-overflow" if.bind="rows">
+      <thead>
+        <tr>
+          <th class="sortable" repeat.for="column of columns" click.trigger="sort(column)">
+            ${column}
+            <i class="fas fa-caret-${sortAsc ? 'up' : 'down'}" if.bind="sortableColumn == column"></i>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr repeat.for="row of pagedResult">
+          <!-- This works, but I don't want it yet... or do I? -->
+          <!-- <td repeat.for="value of row" innerHTML.bind="highlight(value)"></td> -->
+          <td repeat.for="value of row">${value}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="pagination-footer">
     <div class="actions-tray">
       <button type="button" class="btn btn-default btn-outline btn-sm" click.trigger="prevPage()" disabled.bind="!hasPrevPage">
