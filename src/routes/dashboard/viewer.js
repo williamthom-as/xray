@@ -84,6 +84,12 @@ export class Viewer {
     this.dashboard = null;
     this.content = null;
 
+
+    this.app.showInfo(
+      'Reloading dashboard', 
+      'Just a second while we fetch the latest data...'
+    );
+
     this.getDashboard(true);
   }
 

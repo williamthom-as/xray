@@ -1,13 +1,15 @@
 .dialog-lite-overlay {
   background-color: rgba(0, 0, 0, 0.8);
-  // z-index: 3001;
+  z-index: 3001;
 }
 
 // TODO: Responsiveness
 
 .modal {
   .modal-dialog {
-    background-color: white;
+    color: var(--text-primary);
+    background-color: var(--page-background);
+  
     width: 48rem;
     border-radius: 0.5rem;
 
@@ -50,7 +52,7 @@
         justify-content: space-between;
 
         padding: 1rem;
-        background-color: $gray-100;
+        background-color: var(--page-background);
         border-bottom-left-radius: 1rem;
         border-bottom-right-radius: 1rem;
       }

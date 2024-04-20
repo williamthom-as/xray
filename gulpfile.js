@@ -11,6 +11,8 @@ const merge2 = require('merge2');
 const postcss = require('gulp-postcss');
 const terser = require('gulp-terser');
 const gulpif = require('gulp-if');
+const imagemin = require('gulp-imagemin');
+
 const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 const devServer = require('./dev-server');
@@ -137,6 +139,12 @@ function buildCss(src) {
     ]));
 }
 
+function buildImages(src) {
+  return gulp.src(src)
+    .pipe(imagemin())
+    .pipe(gulp.dest('dist/images'));
+}
+
 function build() {
   // Merge all js/css/html file streams to feed dumber.
   // Note scss was transpiled to css file by gulp-dart-sass.
@@ -147,7 +155,8 @@ function build() {
     gulp.src('src/**/*.json', {since: gulp.lastRun(build)}),
     gulp.src('src/**/*.html', {since: gulp.lastRun(build)}),
     buildJs('src/**/*.js'),
-    buildCss('src/**/*.{scss,css}')
+    buildCss('src/**/*.{scss,css}'),
+    buildImages('src/images/**/*')
   )
 
   // Note we did extra call `dr()` here, this is designed to cater watch mode.

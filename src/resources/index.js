@@ -1,5 +1,6 @@
 export function configure(config) {
   config.globalResources([
+    './value-converters/markdown.js',
     './value-converters/file-to-text.js',
     './value-converters/json-formatter.js',
     './value-converters/file-list-to-array.js',

@@ -12,7 +12,7 @@ $double-tile-min-width: 40rem;
   .tile {
     flex: 1 0 $tile-min-width;
     // margin: $tile-margin $tile-margin 0 $tile-margin;
-    margin: 0 $tile-margin;
+    margin: 0 ($tile-margin - 0.25rem);
 
     // max-width: 60rem;
 
