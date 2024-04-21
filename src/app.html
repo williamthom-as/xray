@@ -12,7 +12,7 @@
           </a>
         </li>
         <li class="nav-item" repeat.for="row of router.navigation">
-          <a class="${row.isActive ? 'active' : ''} nav-link" click.delegate="navigateMenu(row.href)">
+          <a class="${(row.isActive || (row.config.name == highlight)) ? 'active' : ''} nav-link" click.delegate="navigateMenu(row.href)">
             <i class="${row.settings.icon}"></i>
             <div class="link-text">${row.title}
               <div class="sub-link-text">${row.settings.description}</div>
@@ -39,7 +39,6 @@
     <router-view swap-order="after"></router-view>
   </main>
   <footer>
-
   </footer>
   <toasts></toasts>
 </template>

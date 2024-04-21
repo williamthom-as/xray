@@ -26,6 +26,11 @@
             <div class="title">${panel.title}</div>
           </div>
           <div slot="body">
+            <div class="text-small text-secondary" style="margin: 1rem 0" if.bind="panel.description">
+              ${panel.description}
+            </div>
+
+
             <div if.bind="panel.widget_type == 'markdown'">
               <div innerhtml.bind="panel.data.content | markdown"></div>
             </div>

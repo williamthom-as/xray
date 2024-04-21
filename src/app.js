@@ -1,4 +1,4 @@
-import {inject} from 'aurelia-framework';
+import {inject,computedFrom} from 'aurelia-framework';
 import {DialogService} from 'aurelia-dialog-lite';
 import {combo} from 'aurelia-combo';
 import {QuickMenuDialog} from "./dialog/quick_menu_dialog";
@@ -39,6 +39,26 @@ export class App {
         description: 'Get started here'
       }
     },{
+      route: 'dashboards',
+      moduleId: './routes/dashboard/index',
+      name: 'dashboards',
+      title: 'Dashboards',
+      nav: true,
+      settings: {
+        icon: 'fas fa-image',
+        description: 'View dashboards'
+      }
+    },{
+      route: 'dashboard/viewer/:id',
+      moduleId: './routes/dashboard/viewer',
+      name: 'dashboard-viewer',
+      title: 'View Dashboard',
+      nav: false,
+      settings: {
+        description: 'View dashboard',
+        highlight: 'dashboards'
+      }
+    },{
       route: 'settings',
       moduleId: './routes/settings/index',
       name: 'settings',
@@ -48,21 +68,17 @@ export class App {
         icon: 'fas fa-wrench',
         description: 'Change your settings'
       }
-    },{
-      route: 'dashboard/viewer/:id',
-      moduleId: './routes/dashboard/viewer',
-      name: 'dashboard-viewer',
-      title: 'View Dashboard',
-      nav: false,
-      settings: {
-        description: 'View Dashboard'
-      }
     }]);
   }
 
   navigateMenu(routeHref) {
     this.opened = null;
     this.router.navigate(routeHref, {});
+  }
+
+  @computedFrom('router', 'router.currentInstruction')
+  get highlight() {
+      return _.get(this.router, 'currentInstruction.config.settings.highlight');
   }
 
   @combo('ctrl+j', 'command+j')
