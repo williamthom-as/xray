@@ -1,5 +1,6 @@
 <template>
   <require from="./app.scss"></require>
+  <loading-indicator loading.bind="router.isNavigating"></loading-indicator>
   <header>
     <nav class="navbar-sidebar">
       <ul class="navbar-nav">

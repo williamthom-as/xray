@@ -21,5 +21,6 @@ export function configure(config) {
     './elements/prism-code',
     './elements/charts/data-chart',
     './elements/logo',
+    './elements/loading-indicator',
   ]);
 }
