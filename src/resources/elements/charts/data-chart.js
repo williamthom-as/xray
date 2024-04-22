@@ -9,8 +9,7 @@ import Chart from 'chart.js/auto'
   </template>
 `)
 export class DataChart {
-  @bindable labels;
-  @bindable values;
+  @bindable data;
   @bindable chartType;
   @bindable options;
   
@@ -38,15 +37,7 @@ export class DataChart {
     
     this.chart = new Chart(this.canvas, {
       type: this.chartType || "line",
-      data: {
-        labels: this.labels,
-        datasets: [
-          {
-            label: this.options?.chart_title || "No title",
-            data: this.values
-          }
-        ]
-      },
+      data: this.data,
       options: {
         responsive: true,
         maintainAspectRatio: false
