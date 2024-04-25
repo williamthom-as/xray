@@ -53,7 +53,13 @@
     }
 
     &.text-truncate {
-      max-width: 4rem;
+      max-width: 6rem;
+    }
+
+    .ellipsis {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
