@@ -1,10 +1,11 @@
 import {inject, bindable} from 'aurelia-framework';
 import {DialogService} from 'aurelia-dialog-lite';
 import {Router} from 'aurelia-router';
+import {generateRandomId} from '../../util/generate-random-id';
+
 
 @inject(Router, DialogService, 'AppService', 'LocalStorageService', 'GithubService')
 export class Viewer {
-
   @bindable dashboard = null;
   @bindable content = null;
 
@@ -75,6 +76,7 @@ export class Viewer {
         this.isProcessing = false;
       })
       .catch(error => {
+        console.log("here!", this.id, error);
         this.router.navigateToRoute('home');
         this.app.showError('Problem retrieving Dashboard', error);
       });
@@ -84,13 +86,22 @@ export class Viewer {
     this.dashboard = null;
     this.content = null;
 
-
     this.app.showInfo(
       'Reloading dashboard', 
       'Just a second while we fetch the latest data...'
     );
 
     this.getDashboard(true);
+  }
+
+  save() {
+    if (this.dashboard.id == "remote") {
+      this.dashboard.id = generateRandomId();
+      this.storageService.setDashboard(this.dashboard).then(() => {
+        this.id = this.dashboard.id; // Reset ID
+        this.reload();
+      });
+    }
   }
 
   loadDashboardFromGist(gistId) {

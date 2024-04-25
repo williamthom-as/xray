@@ -1,7 +1,9 @@
 import {inject, computedFrom} from 'aurelia-framework';
 import {DialogController} from 'aurelia-dialog-lite';
 import {Router} from 'aurelia-router';
-import { EventAggregator } from 'aurelia-event-aggregator';
+import {EventAggregator} from 'aurelia-event-aggregator';
+
+import { generateRandomId } from '../util/generate-random-id';
 
 @inject(Router, DialogController, EventAggregator, 'Validation', 'AppService', 'LocalStorageService', 'GithubService')
 export class AddDashboardDialog {
@@ -54,7 +56,7 @@ export class AddDashboardDialog {
     this.isProcessing = true;
 
     if (!this.model.id) {
-      this.model.id = this.generateRandomId();
+      this.model.id = generateRandomId();
       this.model.createdAt = new Date().toISOString();
     }
     
@@ -102,16 +104,5 @@ export class AddDashboardDialog {
   @computedFrom('errors')
   get hasError() {
     return !_.isEmpty(this.errors);
-  }
-
-  generateRandomId() {
-    let id = '';
-    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-    for (let i = 0; i < 8; i++) {
-        id += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-
-    return id;
   }
 }

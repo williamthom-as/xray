@@ -25,6 +25,7 @@ export class LocalStorageService {
           const dashboard = dashboards.find(d => d.id === id);
 
           if (!dashboard) {
+            console.log(dashboards)
             reject(new Error(`No dashboard found with the id - '${id}'`));
           }
 

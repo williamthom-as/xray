@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="actions">
-        <button type="button" class="btn btn-secondary btn-outline mono-font" click.trigger="reload()" if.bind="dashboard.id === 'remote'">
+        <button type="button" class="btn btn-secondary btn-outline mono-font" click.trigger="save()" if.bind="dashboard.id === 'remote'">
           <i class="fas fa-save"></i> Save
         </button>
         <button type="button" class="btn btn-default btn-outline mono-font" click.trigger="reload()" if.bind="content && dashboard.id != 'remote'">
