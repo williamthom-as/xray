@@ -1,6 +1,8 @@
-# cure-viz
+# Cure Viz
 
-An app using dumber bundler to build. More details in `gulpfile.js`.
+Cure Viz is a simple web app for creating shareable dashboards. Dashboards can be shared via query string, hosted in a Gist, or uploaded manually.
+
+A dashboard can be viewed or persisted to local storage.
 
 ## Run in dev mode, plus watch
 
