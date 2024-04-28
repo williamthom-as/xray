@@ -30,9 +30,8 @@
               ${panel.description}
             </div>
 
-
             <div if.bind="panel.widget_type == 'markdown'">
-              <div innerhtml.bind="panel.data.content | markdown"></div>
+              <div class="markdown" innerhtml.bind="panel.data.content | markdown"></div>
             </div>
             <div if.bind="panel.widget_type == 'table'">
               <dyn-table rows.bind="panel.data.rows" columns.bind="panel.data.columns"></dyn-table>
