@@ -1,7 +1,7 @@
 <template>
   <section class="panel" css.bind="panelCss()">
     <header class="panel-header">
-      <slot name="header">&nbsp</slot>
+      <slot name="header">&nbsp;</slot>
       <div class="actions">
         <span if.bind="actionTwoFunction" click.trigger="actionTwoFunction()"><i class="fas ${actionTwoIcon}"></i></span>
         <span if.bind="actionOneFunction" click.trigger="actionOneFunction()"><i class="fas ${actionOneIcon}"></i></span>

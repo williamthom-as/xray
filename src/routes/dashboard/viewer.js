@@ -2,7 +2,7 @@ import {inject, bindable} from 'aurelia-framework';
 import {DialogService} from 'aurelia-dialog-lite';
 import {Router} from 'aurelia-router';
 import {generateRandomId} from '../../util/generate-random-id';
-
+import { StaticMessageDialog } from '../../dialog/static_message_dialog';
 
 @inject(Router, DialogService, 'AppService', 'LocalStorageService', 'GithubService')
 export class Viewer {
@@ -149,5 +149,18 @@ export class Viewer {
     }
 
     this.isProcessing = false;
+  }
+
+  showDescription(panel) {
+    this.dialogService.open({
+      viewModel: StaticMessageDialog,
+      model: {
+        title: `About '${panel.title}'`,
+        content: panel.description || "No description!",
+      },
+    }).then(
+      (_resp) => {},
+      () => {}
+    );
   }
 }
