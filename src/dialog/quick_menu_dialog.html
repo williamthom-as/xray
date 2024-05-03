@@ -3,7 +3,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
-          <div class="menu-container mb-1">
+          <div class="menu-container">
             <input
               type="search"
               class="form-control"
@@ -12,13 +12,15 @@
               style="font-size: 0.875rem;height: 2.4rem;"
             >
           </div>
-          <div class="menu-container" mouseover.delegate="active = $index" repeat.for="row of router.navigation | filterBy: filter : 'title'">
-            <a class="menu-link ${$index == active ? 'active' : ''}" click.delegate="navigateMenu(row.href)">
-              <i class="${row.settings.icon}"></i>
-              <div class="menu-link-text">${row.title}
-                <div class="sub-link-text">${row.settings.description}</div>
-              </div>
-            </a>
+          <div class="menu-container">
+            <div mouseover.delegate="active = $index" repeat.for="row of router.navigation | filterBy: filter : 'title'">
+              <a class="menu-link ${$index == active ? 'active' : ''}" click.delegate="navigateMenu(row.href)">
+                <i class="${row.settings.icon}"></i>
+                <div class="menu-link-text">${row.title}
+                  <div class="sub-link-text">${row.settings.description}</div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
         <div class="modal-footer">

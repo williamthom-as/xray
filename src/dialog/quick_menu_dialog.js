@@ -1,16 +1,19 @@
-import {inject, computedFrom} from 'aurelia-framework';
-import {DialogController} from 'aurelia-dialog-lite';
+import {inject} from 'aurelia-framework';
+import {DialogService, DialogController} from 'aurelia-dialog-lite';
 import {combo} from 'aurelia-combo';
 import {Router} from 'aurelia-router';
 
-@inject(Router, DialogController)
+import {QuickLoadRemoteDialog} from "./quick_load_remote_dialog";
+
+@inject(Router, DialogService, DialogController)
 export class QuickMenuDialog {
 
   active = 0;
 
-  constructor(router, controller) {
+  constructor(router, dialogService, controller) {
     this.router = router;
     this.controller = controller;
+    this.dialogService = dialogService;
   }
 
   activate(model) {

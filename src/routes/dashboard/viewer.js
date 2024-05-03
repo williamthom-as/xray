@@ -120,6 +120,8 @@ export class Viewer {
         this.content = JSON.parse(gist.files[Object.keys(gist.files)[0]].content)
         this.dashboard.content = this.content;
 
+        this.storageService.addRecentlyViewed(this.dashboard);
+
         this.isProcessing = false;
       })
       .catch((error) => {

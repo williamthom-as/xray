@@ -1,6 +1,7 @@
 export class LocalStorageService {
 
   DASHBOARD_KEY = "dashboards";
+  RECENTLY_VIEWED = "recently_viewed";
 
   getDashboards() {
     return new Promise((resolve, reject) => {
@@ -25,7 +26,6 @@ export class LocalStorageService {
           const dashboard = dashboards.find(d => d.id === id);
 
           if (!dashboard) {
-            console.log(dashboards)
             reject(new Error(`No dashboard found with the id - '${id}'`));
           }
 
@@ -90,6 +90,41 @@ export class LocalStorageService {
           }
         })
         .catch(error => reject(error));
+    });
+  }
+
+  addRecentlyViewed(dashboard) {
+    let recentlyViewed = JSON.parse(localStorage.getItem(this.RECENTLY_VIEWED));
+
+    if (!recentlyViewed) {
+      recentlyViewed = [];
+    }
+
+    const index = recentlyViewed.findIndex(d => d.gistId === dashboard.gistId);
+    if (index !== -1) {
+      recentlyViewed.splice(index, 1);
+    } else if (recentlyViewed.length >= 10) {
+      recentlyViewed.shift();
+    }
+
+    recentlyViewed.push(dashboard);
+
+    localStorage.setItem(this.RECENTLY_VIEWED, JSON.stringify(recentlyViewed));
+  }
+
+  getRecentlyViewed() {
+    return new Promise((resolve, reject) => {
+      try {
+        let recentlyViewed = JSON.parse(localStorage.getItem(this.RECENTLY_VIEWED));
+
+        if (!recentlyViewed) {
+          recentlyViewed = [];
+        }
+
+        resolve(recentlyViewed);
+      } catch (error) {
+        reject(error);
+      }
     });
   }
 }

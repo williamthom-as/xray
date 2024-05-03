@@ -1,0 +1,21 @@
+<template>
+  <div class="page-header">
+    <div class="title">
+      ${title || 'Unknown'}
+      <div class="text-small text-secondary" if.bind="description">
+        ${description}
+      </div>
+    </div>
+    <div class="actions">
+      <slot name="actions"></slot>
+
+      <div class="left-border">&nbsp;</div>
+      <a href="#" click.trigger="quickRemote()" title="Jump to remote">
+        <i class="fas fa-cloud-upload-alt"></i>
+      </a>
+      <a href="#" click.trigger="quickMenu()" title="Load quick menu">
+        <i class="fas fa-search" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</template>

@@ -67,7 +67,6 @@ export class AddDashboardDialog {
     if (this.model.from === 'github') {
       contentPromise = this.github.getGist(this.model.gistId)
         .then(gist => {
-          console.log(gist);
           this.model.content = JSON.parse(gist.files[Object.keys(gist.files)[0]].content);
         })
         .catch(() => {

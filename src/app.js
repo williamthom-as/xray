@@ -1,12 +1,9 @@
 import {inject,computedFrom} from 'aurelia-framework';
 import {DialogService} from 'aurelia-dialog-lite';
-import {combo} from 'aurelia-combo';
-import {QuickMenuDialog} from "./dialog/quick_menu_dialog";
 
 @inject(DialogService, 'AppService')
 export class App {
   scheme = 'auto';
-  modalOpen = false;
 
   constructor(dialogService, appService) {
     this.dialogService = dialogService;
@@ -79,24 +76,6 @@ export class App {
   @computedFrom('router', 'router.currentInstruction')
   get highlight() {
       return _.get(this.router, 'currentInstruction.config.settings.highlight');
-  }
-
-  @combo('ctrl+j', 'command+j')
-  quickMenu() {
-    if (this.modalOpen === false) {
-      this.modalOpen = true
-      this.dialogService.open({
-        viewModel: QuickMenuDialog,
-        model: {},
-      }).then(
-        (_resp) => {},
-        () => {}
-      ).finally(
-        () => {
-          this.modalOpen = false;
-        }
-      )
-    }
   }
 
   changeScheme(scheme) {

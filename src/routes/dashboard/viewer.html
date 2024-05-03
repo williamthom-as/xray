@@ -2,14 +2,11 @@
   <require from="./components/dyn-table"></require>
   <spinner if.bind="isProcessing"></spinner>
   <div if.bind="content">
-    <div class="page-header">
-      <div class="title">
-        ${content.title ? content.title : 'unknown'}
-        <div class="text-small text-secondary" if.bind="content.description">
-          ${content.description ? content.description : 'No description given'}
-        </div>
-      </div>
-      <div class="actions">
+    <page-header 
+      title.bind="content.title" 
+      description.bind="content.description"
+    >
+      <div slot="actions">
         <button type="button" class="btn btn-secondary btn-outline mono-font" click.trigger="save()" if.bind="dashboard.id === 'remote'">
           <i class="fas fa-save"></i> Save
         </button>
@@ -17,7 +14,7 @@
           <i class="fas fa-sync"></i> Reload
         </button>
       </div>
-    </div>
+    </page-header>
   
     <section class="tile-container" if.bind="content.panels">
       <div class="tile ${panel.options.width_class ? panel.options.width_class : ''}" repeat.for="panel of content.panels">

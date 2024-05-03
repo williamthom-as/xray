@@ -1,5 +1,10 @@
 .menu-container {
   width: 100%;
+  margin-bottom: 1;
+
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
 
   .menu-link {
     display: flex;
@@ -62,8 +67,12 @@
       color: var(--text-secondary);
       font-size: 0.75rem;
     }
-
-
   }
-
 }
+
+.splitter {
+  height: 1px;
+  background: $gray-400;
+  margin: 1rem 0;
+}
+

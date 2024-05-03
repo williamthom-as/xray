@@ -1,0 +1,28 @@
+<template>
+  <div class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="menu-container">
+            <h4 class="mb-1">Jump to Gist!</h4>
+            <input
+              ref="searchInput"
+              type="search"
+              class="form-control"
+              placeholder="Gist ID"
+              value.bind="value"
+              style="font-size: 0.875rem; height: 2.4rem;"
+            >
+          </div>
+          <div style="margin: 1rem 0;">
+            This will take you to a read-only view of the dashboard.
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-muted btn-y-padding" click.trigger="controller.cancel()">Close</button>
+          <button type="button" class="btn btn-primary" click.trigger="navigateToGist()" disabled.bind="!value">Go!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

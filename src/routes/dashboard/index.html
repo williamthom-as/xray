@@ -1,3 +1,42 @@
 <template>
-  Here
+  <require from="./dashboards"></require>
+  <require from="./recently-viewed"></require>
+
+
+  <page-header title="Dashboards">
+    <div slot="actions"></div>
+  </page-header>
+  <div class="row">
+    <div class="col">
+      <panel
+        show-header.bind="true"
+      >
+        <div slot="header">
+          <div class="title">Stored Dashboards</div>
+        </div>
+        <div slot="body">
+          <div class="text-right">
+            <button class="btn btn-primary btn-sm" click.trigger="add()">
+              <i class="fas fa-plus"></i> Add Dashboard
+            </button>
+          </div>
+          <dashboards></dashboards>
+        </div>
+      </panel>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <panel show-header.bind="true">
+        <div slot="header">
+          <div class="title">Recently Viewed</div>
+        </div>
+        <div slot="body">
+          <div if.bind="viewed">
+            <recently-viewed data.bind="viewed"></recently-viewed>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
 </template>
