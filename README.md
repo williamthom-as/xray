@@ -1,8 +1,19 @@
 # Cure Viz
 
-Cure Viz is a simple web app for creating shareable dashboards. Dashboards can be shared via query string, hosted in a Gist, or uploaded manually.
+Cure Viz is a simple web app for creating and viewing shareable dashboards that are built using the dashboard templating language built into Cure. 
 
-A dashboard can be viewed or persisted to local storage.
+Dashboards can be shared via query string (hosted in a Gist or remotely accessible), or uploaded manually and can be viewed or persisted to local storage. This
+allows for no central server to be required, just host the web app and it is ready to go.
+
+Over time, more visualisation and layout options will be added, but for now the following options are available:
+
+- Charts: bar, line, pie, scatter (multi-chart supported)
+- Table: filterable, paged
+- Markdown
+
+## Templating
+
+As mentioned, Cure Viz uses a JSON-based delcarative format for describing dashboards. You can read more about it [here](https://github.com/williamthom-as/cure) 
 
 ## Run in dev mode, plus watch
 
