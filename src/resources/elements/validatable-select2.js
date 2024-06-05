@@ -1,4 +1,4 @@
-import { inject, bindable, bindingMode } from 'aurelia-framework';
+import {inject, bindable, bindingMode} from 'aurelia-framework';
 import 'select2';
 import $ from 'jquery';
 

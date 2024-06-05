@@ -3,7 +3,7 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  overflow-x: auto;
+  // overflow-x: auto;
 
   margin-bottom: 2rem;
 
@@ -24,11 +24,10 @@
       text-decoration: none;
     }
 
-    *:not(:last-child) {
-      margin-right: 1rem;
-    }
+    // *:not(:last-child) {
+    //   margin-right: 1rem;
+    // }
   }
-
 }
 
 .section-header {

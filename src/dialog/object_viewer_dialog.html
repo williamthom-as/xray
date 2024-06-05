@@ -1,0 +1,40 @@
+<template>
+  <div class="modal">
+    <div class="modal-dialog modal-dialog-lg">        
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            ${title}
+          </div>
+        </div>
+        <div class="modal-body">
+        
+          <div class="tabs-container">
+            <menu class="tabs-menu">
+              <a class="${opened == 'json' ? 'active' : ''}" click.delegate="opened = 'json'">
+                <i class="fas fa-code"></i> JSON Viewer
+              </a>
+              <a class="${opened == 'object' ? 'active' : ''}" click.delegate="opened = 'object'">
+                <i class="fas fa-cube"></i> Object Viewer
+              </a>
+            </menu>
+          </div>
+        
+          <div class="tabs-panel">
+            <page-section if.bind="opened == 'json'">
+              <pre><code if.bind="json" innerHTML.bind="json | jsonFormatter"></code></pre>
+            </page-section>
+            <page-section if.bind="opened == 'object'">
+              <div class="accordion" if.bind="object">
+                <parent struct.bind="object" key.bind="key"></parent>
+              </div>
+            </page-section>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-muted btn-y-padding" click.trigger="controller.cancel()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

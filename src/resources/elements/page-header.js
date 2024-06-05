@@ -36,7 +36,6 @@ export class PageHeader {
 
   @combo('ctrl+d', 'command+d')
   quickRemote() {
-    console.log("quick remote")
     if (this.quickRemoteModalOpen === false) {
       this.quickRemoteModalOpen = true
       this.dialogService.open({

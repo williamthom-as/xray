@@ -22,6 +22,7 @@ export function configure(config) {
     './elements/charts/data-chart',
     './elements/logo',
     './elements/loading-indicator',
-    './elements/page-header'
+    './elements/page-header',
+    './elements/dropdown-menu'
   ]);
 }

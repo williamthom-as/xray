@@ -1,0 +1,12 @@
+<template>
+  <div class="dropdown ${opened ? 'open' : ''}">
+    <button class="btn btn-default btn-outline btn-no-hover mono-font" click.delegate="opened = !opened" ref="dropdown">
+      <i class="fas fa-ellipsis-v"></i>
+    </button>
+    <div class="dropdown-content">
+      <slot name="links">
+      </slot>
+    </div>
+  </div>
+</template>
+

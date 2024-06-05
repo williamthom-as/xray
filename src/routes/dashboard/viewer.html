@@ -7,15 +7,18 @@
       description.bind="content.description"
     >
       <div slot="actions">
-        <button type="button" class="btn btn-secondary btn-outline mono-font" click.trigger="save()" if.bind="dashboard.id === 'remote'">
-          <i class="fas fa-save"></i> Save
-        </button>
-        <button type="button" class="btn btn-default btn-outline mono-font" click.trigger="reload()" if.bind="content && dashboard.id != 'remote'">
-          <i class="fas fa-sync"></i> Reload
-        </button>
+        <a href="#" click.trigger="reload()" if.bind="content && dashboard.id != 'remote'">
+          <i class="fas fa-fw fa-sync"></i> Reload
+        </a>
+        <a href="#" click.trigger="save()" if.bind="dashboard.id === 'remote'">
+          <i class="fas fa-fw fa-save"></i> Save
+        </a>
+        <a href="#" click.trigger="viewTemplate()">
+          <i class="fas fa-fw fa-eye"></i> Template
+        </a>
+        <div class="divider"></div>
       </div>
     </page-header>
-  
     <section class="tile-container" if.bind="content.panels">
       <div class="tile ${panel.options.width_class ? panel.options.width_class : ''}" repeat.for="panel of content.panels">
         <panel

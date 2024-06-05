@@ -58,6 +58,13 @@
       &:hover {
         background-color: $blue;
       }
+
+      &.btn-no-hover {
+        &:hover {
+          color: $blue !important;
+          background-color: transparent;
+        }
+      }
     }  
 
     &.btn-danger {
@@ -72,11 +79,18 @@
 
     &.btn-default {
       background-color: transparent;
-      color: $gray-700;
+      color: $gray-800;
       box-shadow: none;
 
       &:hover {
-        background-color: $gray-700;
+        background-color: $gray-500;
+      }
+
+      &.btn-no-hover {
+        &:hover {
+          color: $gray-700 !important;
+          background-color: transparent;
+        }
       }
     }
   }

@@ -13,7 +13,9 @@ Over time, more visualisation and layout options will be added, but for now the 
 
 ## Templating
 
-As mentioned, Cure Viz uses a JSON-based delcarative format for describing dashboards. You can read more about it [here](https://github.com/williamthom-as/cure) 
+As mentioned, Cure Viz uses a JSON-based format for describing dashboards. You can read more about it [here](https://github.com/williamthom-as/cure).
+
+Alternatively, you can view an example dashboard [here](https://xyare.com/dashboard/viewer/remote?gistId=fbbcb4ba16e3483bc66156d6c8a8dcf8).
 
 ## Run in dev mode, plus watch
 

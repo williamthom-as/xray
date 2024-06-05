@@ -2,7 +2,8 @@ import {inject, bindable} from 'aurelia-framework';
 import {DialogService} from 'aurelia-dialog-lite';
 import {Router} from 'aurelia-router';
 import {generateRandomId} from '../../util/generate-random-id';
-import { StaticMessageDialog } from '../../dialog/static_message_dialog';
+import {StaticMessageDialog} from '../../dialog/static_message_dialog';
+import {ObjectViewerDialog} from '../../dialog/object_viewer_dialog';
 
 @inject(Router, DialogService, 'AppService', 'LocalStorageService', 'GithubService')
 export class Viewer {
@@ -102,6 +103,19 @@ export class Viewer {
         this.reload();
       });
     }
+  }
+
+  viewTemplate() {
+    this.dialogService.open({
+      viewModel: ObjectViewerDialog,
+      model: {
+        title: "Dashboard Template",
+        object: this.dashboard
+      },
+    }).then(
+      (_resp) => {},
+      () => {}
+    );
   }
 
   loadDashboardFromGist(gistId) {
