@@ -3,6 +3,7 @@ import {combo} from 'aurelia-combo';
 import {DialogService} from 'aurelia-dialog-lite';
 import {QuickMenuDialog} from "../../dialog/quick_menu_dialog";
 import {QuickLoadRemoteDialog} from "../../dialog/quick_load_remote_dialog";
+import {keyboardShortcutsDialog} from '../../dialog/keyboard_shortcuts_dialog';
 
 @inject(DialogService)
 export class PageHeader {
@@ -52,5 +53,17 @@ export class PageHeader {
         }
       )
     }
+  }
+
+  keyboardShortcuts() {
+    this.dialogService.open({
+      viewModel: keyboardShortcutsDialog,
+      model: {},
+    }).then(
+      (_resp) => {},
+      () => {}
+    ).finally(
+      () => {}
+    )
   }
 }

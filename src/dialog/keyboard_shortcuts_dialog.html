@@ -1,0 +1,56 @@
+<template>
+  <div class="modal">
+    <div class="modal-dialog">        
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            Keyboard Shortcuts
+          </div>
+        </div>
+        <div class="modal-body">
+          <section class="keyboard-entry">
+            <h4>Open Quick Jump Menu</h4>
+            <div class="mb-1">
+              <small>Open a keyboard driven menu modal</small>
+            </div>
+            <article class="keyboard-container">
+              <div class="keyboard keyboard-lg">
+                <div class="char">CTRL</div>
+              </div>
+              <div class="keyboard-seperator">/</div>
+              <div class="keyboard keyboard-lg">
+                <div class="char">CMD</div>
+              </div>
+              <div class="keyboard-seperator">+</div>
+              <div class="keyboard">
+                <div class="char">J</div>
+              </div>
+            </article>
+          </section>
+          <section class="keyboard-entry">
+            <h4>Quick Load Gist</h4>
+            <div class="mb-1">
+              <small>Open a remote Gist with just the Gist ID</small>
+            </div>
+            <article class="keyboard-container">
+              <div class="keyboard keyboard-lg">
+                <div class="char">CTRL</div>
+              </div>
+              <div class="keyboard-seperator">/</div>
+              <div class="keyboard keyboard-lg">
+                <div class="char">CMD</div>
+              </div>
+              <div class="keyboard-seperator">+</div>
+              <div class="keyboard">
+                <div class="char">D</div>
+              </div>
+            </article>
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-muted btn-y-padding" click.trigger="controller.cancel()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
