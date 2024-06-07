@@ -5,6 +5,21 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 
 import { generateRandomId } from '../util/generate-random-id';
 
+async function readFileAsDataContents(file) {
+  let result = await new Promise((resolve) => {
+      let fileReader = new FileReader();
+      fileReader.onload = (e) => resolve(fileReader.result);
+
+      if (file) {
+        fileReader.readAsText(file);
+      } else {
+        ''
+      }
+  });
+
+  return result;
+}
+
 @inject(Router, DialogController, EventAggregator, 'Validation', 'AppService', 'LocalStorageService', 'GithubService')
 export class AddDashboardDialog {
 
@@ -26,19 +41,19 @@ export class AddDashboardDialog {
 
     this.validator = validation.generateValidator({
       content: [
-        {if: 'from === "text"', validate: 'mandatory'},
-        {if: 'type === "github"', validate: 'notMandatory'},
+        {if: 'from === "upload"', validate: 'notMandatory'},
+        {if: 'from === "github"', validate: 'notMandatory'},
       ],
       gistId: [
-        {if: 'from === "text"', validate: 'notMandatory'},
-        {if: 'type === "github"', validate: 'mandatory'}, 'gistId',
+        {if: 'from === "upload"', validate: 'notMandatory'},
+        {if: 'from === "github"', validate: 'mandatory'}, 'gistId',
       ],
     });
   }
 
   activate(_model) {
     this.model = {
-      from: "text",
+      from: "upload",
       content: "",
       gistId: ""
     };
@@ -75,6 +90,14 @@ export class AddDashboardDialog {
     } else if (this.model.from === 'text') {
       // Change here if we need to do anything later.
       contentPromise = Promise.resolve();
+    } else if (this.model.from === 'upload') {
+      contentPromise = readFileAsDataContents(this.selectedFile[0])
+        .then(dataContents => {
+          this.model.content = JSON.parse(dataContents);
+        })
+        .catch(() => {
+          throw new Error('File is invalid')
+        });
     } else {
       throw new Error('Invalid source');
     }
@@ -102,6 +125,7 @@ export class AddDashboardDialog {
 
   @computedFrom('errors')
   get hasError() {
+    console.log(this.errors);
     return !_.isEmpty(this.errors);
-  }
+  }  
 }

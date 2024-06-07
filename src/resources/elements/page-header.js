@@ -9,6 +9,7 @@ import {keyboardShortcutsDialog} from '../../dialog/keyboard_shortcuts_dialog';
 export class PageHeader {
   @bindable title = null;
   @bindable description = null;
+  @bindable showHome = true;
 
   quickMenuModalOpen = false;
   quickRemoteModalOpen = false;

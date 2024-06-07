@@ -81,31 +81,11 @@ Exports
             "title": "Test Table",
             "widget_type": "table",
             "data": {
-                "columns": [
-                    "Name",
-                    "Color",
-                    "Age",
-                    "City"
-                ],
+                "columns": ["Name", "Color", "Age", "City" ],
                 "rows": [
-                    [
-                        "alice",
-                        "xanadu",
-                        25,
-                        "New York"
-                    ],
-                    [
-                        "xavier",
-                        "azure",
-                        30,
-                        "Los Angeles"
-                    ],
-                    [
-                        "emily",
-                        "emerald",
-                        22,
-                        "Chicago"
-                    ]
+                    ["alice", "xanadu", 25, "New York"],
+                    ["xavier", "azure", 30, "Los Angeles"],
+                    ["emily", "emerald", 22, "Chicago"]
                 ]
             },
             "options": {}
@@ -114,28 +94,10 @@ Exports
             "title": "Test Chart",
             "widget_type": "bar-chart",
             "data": {
-                "labels": [
-                    "Red",
-                    "Blue",
-                    "Yellow"
-                ],
+                "labels": ["Red", "Blue", "Yellow"],
                 "datasets": [
-                    {
-                        "label": "Count",
-                        "data": [
-                            10,
-                            20,
-                            30
-                        ]
-                    },
-                    {
-                        "label": "Max",
-                        "data": [
-                            1,
-                            40,
-                            66
-                        ]
-                    }
+                    { "label": "Count", "data": [10, 20, 30] },
+                    { "label": "Max", "data": [1, 40, 66] }
                 ],
                 "options": {
                     "chart_title": "Colour Count Chart"

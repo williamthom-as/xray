@@ -8,6 +8,7 @@ import {AddDashboardDialog} from "../../dialog/add_dashboard_dialog";
 export class Index {
 
   modalOpen = false;
+  showHome = false;
 
   constructor(dialogService, ajax, storageService) {
     this.dialogService = dialogService;

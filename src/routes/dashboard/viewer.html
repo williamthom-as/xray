@@ -6,6 +6,14 @@
       title.bind="content.title" 
       description.bind="content.description"
     >
+      <div slot="links" class="childen">
+        <div class="entry">
+          <a route-href="route: dashboards;">
+            <i class="fas fa-image fa-fw"></i> Dashboards
+          </a>
+        </div>
+        <div class="seperator">/</div>
+      </div>
       <div slot="actions">
         <a href="#" click.trigger="reload()" if.bind="content && dashboard.id != 'remote'">
           <i class="fas fa-fw fa-sync"></i> Reload

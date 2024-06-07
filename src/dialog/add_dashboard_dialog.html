@@ -10,7 +10,7 @@
           <div class="modal-body">
             <validatable-select2
               label="From"
-              values.bind="['text', 'upload', 'github']"
+              values.bind="['upload', 'github']"
               value.bind="model.from"
               errors.bind="errors.from"
               placeholder="Select a source"
@@ -25,14 +25,8 @@
                 type="text">
               </validatable-field>
             </div>
-            <div if.bind="model.from === 'text'">
-              <validatable-field
-                placeholder="Contents"
-                value.bind="model.content"
-                errors.bind="errors.content"
-                label="Content"
-                type="text">
-              </validatable-field>
+            <div if.bind="model.from === 'upload'">
+              <input id="viz-load-input" type="file" accept=".json" files.bind="selectedFile" />
             </div>
           </div>
 

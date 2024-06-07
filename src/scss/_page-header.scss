@@ -1,11 +1,45 @@
+.breadcrumbs {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+
+  .childen {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  .entry {
+    color: var(--text-muted);
+
+    &:hover {
+      color: var(--text-primary);
+    }
+
+    &.current {
+      color: var(--text-muted);
+    }
+  }
+  
+  .seperator {
+    color: var(--text-muted);
+    margin: 0rem 1rem;
+
+    &:only-child {
+      margin: 0rem;
+    }
+  }
+}
+
 .page-header {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  // overflow-x: auto;
 
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 
   .title {
     font-weight: 600;

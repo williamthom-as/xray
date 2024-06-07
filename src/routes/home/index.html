@@ -1,6 +1,6 @@
 <template>
   <require from="../dashboard/dashboards"></require>
-  <page-header title="Home">
+  <page-header title="Overview" description="Get started here" show-home.bind="false">
     <div slot="actions"></div>
   </page-header>
   <div class="row">
@@ -25,7 +25,7 @@
         action-two-icon="fa-plus"
       >
         <div slot="header">
-          <div class="title">Stored Dashboards</div>
+          <div class="title">Saved Dashboards</div>
         </div>
         <div slot="body">
           <dashboards></dashboards>
