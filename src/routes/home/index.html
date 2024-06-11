@@ -1,5 +1,5 @@
 <template>
-  <require from="../dashboard/dashboards"></require>
+  <require from="./dashboards"></require>
   <page-header title="Overview" description="Get started here" show-home.bind="false">
     <div slot="actions">
       <button class="btn btn-secondary btn-sm" click.delegate="add()">Open</button>
@@ -25,20 +25,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <panel
-        show-header.bind="true"
-        action-one-function.call="reload()"
-        action-one-icon="fa-circle-notch"
-        action-two-function.call="add()"
-        action-two-icon="fa-plus"
-      >
-        <div slot="header">
-          <div class="title">Saved Dashboards</div>
-        </div>
-        <div slot="body">
-          <dashboards></dashboards>
-        </div>
-      </panel>
+      <dashboards></dashboards>
     </div>
   </div>
 </template>

@@ -1,0 +1,22 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-gap: 1rem;
+
+  .card-tile {
+    max-width: 32rem;
+    height: 16rem;
+    background-color: var(--panel-background);
+    border-radius: 0.3rem;
+
+    &:hover {
+      box-shadow: 0 0.125rem 1.25rem rgba(0,0,0,0.05);
+      cursor: pointer;
+    }
+
+    &.gradient {
+      background-image: linear-gradient(to right top, #0c274f, #182848, #202a41, #252b39, #2a2c32);
+    }
+  }
+}
+

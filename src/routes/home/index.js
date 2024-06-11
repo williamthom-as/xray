@@ -35,8 +35,4 @@ export class Index {
     }
   }
 
-  reload() {
-    this.getDashboards()
-  }
-
 }

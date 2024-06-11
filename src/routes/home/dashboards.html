@@ -1,0 +1,72 @@
+<template>
+  <spinner if.bind="isProcessing"></spinner>
+  <div class="section-header">
+    <h4>Stored Dashboards</h4>
+    <div class="section-actions">
+      <button class="btn btn-secondary btn-sm btn-outline" click.delegate="view = 'table'">
+        <i class="fa fa-table"></i>
+      </button>
+      <button class="btn btn-secondary btn-sm btn-outline" click.delegate="view = 'card'">
+        <i class="fa fa-square"></i>
+      </button>
+    </div>
+  </div>
+  <section>
+    <div if.bind="view == 'table'">
+      <panel>
+        <div slot="body">
+          <table class="table table-overflow" if.bind="dashboards">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr repeat.for="dashboard of dashboards" if.bind="dashboard">
+                <td class="text-truncate">
+                  <div class="ellipsis">
+                    <a route-href="route: dashboard-viewer; params.bind: { id: dashboard.id }">
+                      ${dashboard.content.title ? dashboard.content.title : 'unknown'}
+                    </a>
+                  </div>
+                  <span class="text-small text-secondary" if.bind="dashboard.content.description">${dashboard.content.description}</span>
+                  <span class="text-small text-secondary" else>No description given</span>
+                </td>
+                <td class="text-truncate">
+                  <div>
+                    ${dashboard.createdAt | timeAgo }
+                  </div>
+                  <span class="text-small text-secondary">
+                    ${dashboard.updatedAt | dateTime }
+                  </span>
+                </td>
+                <td class="text-right">
+                  <button type="button" class="btn btn-secondary btn-outline btn-sm" click.trigger="navigateToDashboard(dashboard)">
+                    <i class="fas fa-folder-open"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-outline btn-sm" click.trigger="removeDashboard(dashboard.id)">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr if.bind="!dashboards">
+                <td colspan="4" class="text-center">
+                  You do not have any stored dashboards.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </panel>
+    </div>
+    <div else>
+      <div class="card-container">
+        <div class="card-tile"></div>
+        <div class="card-tile"></div>
+  
+      </div>
+    </div>
+  </section>
+</template>

@@ -7,6 +7,7 @@ export class Dashboards {
 
   isProcessing = false;
   dashboards = null;
+
   view = 'table';
 
   constructor(router, ea, app, storageService) {
@@ -30,7 +31,6 @@ export class Dashboards {
 
   getDashboards() {
     this.isProcessing = true;
-
     this.storageService.getDashboards()
       .then(dashboards => {
         this.dashboards = dashboards;
