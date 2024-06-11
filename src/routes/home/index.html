@@ -1,16 +1,24 @@
 <template>
   <require from="../dashboard/dashboards"></require>
   <page-header title="Overview" description="Get started here" show-home.bind="false">
-    <div slot="actions"></div>
+    <div slot="actions">
+      <button class="btn btn-secondary btn-sm" click.delegate="add()">Open</button>
+      <button class="btn btn-primary btn-sm" click.delegate="add()">Create</button>
+    </div>
   </page-header>
   <div class="row">
     <div class="col">
       <panel>
         <div slot="header">
-          <div class="title">Welcome!</div>
+          <div class="title">Welcome to Cure Viz!</div>
         </div>
         <div slot="body">
-          Getting started with Cure is easy. Just click the "+" button below to import your first dashboard.
+          <div class="mb-1">
+            <strong>Cure Viz</strong> is an online tool for viewing, creating and sharing interactive dashboards without having to sign up.
+          </div>
+          <div class="mb-1">
+            To get started, either add a dashboard template or try your hand at creating one.
+          </div>
         </div>
       </panel>
     </div>

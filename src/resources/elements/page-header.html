@@ -1,12 +1,29 @@
 <template>
   <div class="breadcrumbs">
-    <div class="entry" if.bind="showHome">
-      <a route-href="route: home;">
-        <i class="fas fa-home fa-fw"></i> Home
-      </a>
+    <div class="bc-content">
+      <div class="entry" if.bind="showHome">
+        <a route-href="route: home;">
+          <i class="fas fa-home fa-fw"></i> Home
+        </a>
+      </div>
+      <div class="seperator">/</div>
+      <slot name="links"></slot>
     </div>
-    <div class="seperator">/</div>
-    <slot name="links"></slot>
+    <div class="bc-actions">
+      <dropdown-menu button-title="Settings">
+        <div slot="links">
+          <a href="#" title="Help">
+            <i class="fas fa-question-circle"></i> Help
+          </a>
+          <a href="#" click.trigger="keyboardShortcuts()" title="View Keyboard Shortcuts">
+            <i class="fas fa-keyboard"></i> Shortcuts
+          </a>
+          <a href="#" click.trigger="quickRemote()" title="Jump to remote">
+            <i class="fas fa-cloud-upload-alt"></i> Quick Load
+          </a>
+        </div>
+      </dropdown-menu>
+    </div>
   </div>
   <div class="page-header">
     <div class="title">
@@ -16,19 +33,7 @@
       </div>
     </div>
     <div class="actions">
-      <dropdown-menu button-title="Settings">
-        <div slot="links">
-          <slot name="actions"></slot>
-          <a href="#" click.trigger="quickRemote()" title="Jump to remote">
-            <i class="fas fa-cloud-upload-alt"></i> Quick Load
-          </a>
-          <a href="#" click.trigger="keyboardShortcuts()" title="Jump to remote">
-            <i class="fas fa-keyboard"></i> Shortcuts
-          </a>
-        </div>
-      </dropdown-menu>
-
-
+      <slot name="actions"></div>
     </div>
   </div>
 </template>

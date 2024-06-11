@@ -15,16 +15,28 @@
         <div class="seperator">/</div>
       </div>
       <div slot="actions">
-        <a href="#" click.trigger="reload()" if.bind="content && dashboard.id != 'remote'">
-          <i class="fas fa-fw fa-sync"></i> Reload
-        </a>
-        <a href="#" click.trigger="save()" if.bind="dashboard.id === 'remote'">
-          <i class="fas fa-fw fa-save"></i> Save
-        </a>
-        <a href="#" click.trigger="viewTemplate()">
-          <i class="fas fa-fw fa-eye"></i> Template
-        </a>
-        <div class="divider"></div>
+        <button class="btn btn-sm btn-secondary" click.trigger="viewTemplate()" title="Download Template">
+          <i class="fas fa-fw fa-download"></i>
+        </button>
+        <button class="btn btn-sm btn-secondary" click.trigger="viewTemplate()" title="View Template">
+          <i class="fas fa-fw fa-eye"></i>
+        </button>
+        <button 
+          class="btn btn-sm btn-primary" 
+          click.trigger="reload()" 
+          if.bind="content && dashboard.id != 'remote'"
+          title="Reload Dashboard"
+        >
+          <i class="fas fa-fw fa-sync"></i>
+        </button>
+        <button 
+          class="btn btn-sm btn-primary" 
+          click.trigger="save()" 
+          if.bind="dashboard.id === 'remote'"
+          title="Save Dashboard"
+        >
+          <i class="fas fa-fw fa-save"></i>
+        </button>
       </div>
     </page-header>
     <section class="tile-container" if.bind="content.panels">
