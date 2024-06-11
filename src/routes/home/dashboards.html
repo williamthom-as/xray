@@ -63,9 +63,23 @@
     </div>
     <div else>
       <div class="card-container">
-        <div class="card-tile"></div>
-        <div class="card-tile"></div>
-  
+        <div class="card-tile" repeat.for="dashboard of dashboards" if.bind="dashboard">
+          ${dashboard.content.title ? dashboard.content.title : 'unknown'}
+        </div> 
+        <div class="card-tile blue-gradient">
+          <div class="card-body">
+            <div class="hero-icon">
+              <i class="fa fa-upload"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-tile green-gradient">
+          <div class="card-body">
+            <div class="hero-icon">
+              <i class="fa fa-plus"></i>
+            </div>
+          </div>
+        </div>  
       </div>
     </div>
   </section>

@@ -8,7 +8,7 @@ export class Dashboards {
   isProcessing = false;
   dashboards = null;
 
-  view = 'table';
+  view = 'card';
 
   constructor(router, ea, app, storageService) {
     this.ea = ea;
