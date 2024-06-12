@@ -66,9 +66,9 @@
                   </button>
                 </td>
               </tr>
-              <tr if.bind="!dashboards">
+              <tr if.bind="dashboards && dashboards.length === 0">
                 <td colspan="3" class="text-center text-secondary" style="padding: 1rem">
-                  You do not have any stored dashboards!
+                  You do not have any saved dashboards!
                 </td>
               </tr>
             </tbody>
@@ -107,6 +107,9 @@
             </div>
           </div>
         </div> 
+      </div>
+      <div class="text-center mb-1 text-secondary" if.bind="dashboards && dashboards.length === 0">
+        You do not have any saved dashboards.
       </div>
     </div>
   </section>
