@@ -10,7 +10,8 @@
     color: var(--text-primary);
     background-color: var(--page-background);
   
-    width: 48rem;
+    width: 80vw;
+    max-width: 64rem;
     border-radius: 0.5rem;
 
     &.modal-dialog-lg {

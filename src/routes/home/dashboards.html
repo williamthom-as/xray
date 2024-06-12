@@ -1,5 +1,20 @@
 <template>
   <spinner if.bind="isProcessing"></spinner>
+  <div if.bind="!dashboards">
+    <panel>
+      <div slot="header">
+        <div class="title">Welcome to Cure Viz!</div>
+      </div>
+      <div slot="body">
+        <p>
+          Your saved dashboards will appear here. 
+        </p>
+        <p>
+          First time visiting? Please click here to get started!
+        </p>
+      </div>
+    </panel>
+  </div>
   <div class="section-header">
     <h4>Stored Dashboards</h4>
     <div class="section-actions">
@@ -15,7 +30,7 @@
     <div if.bind="view == 'table'">
       <panel>
         <div slot="body">
-          <table class="table table-overflow" if.bind="dashboards">
+          <table class="table table-overflow">
             <thead>
               <tr>
                 <th>Title</th>
@@ -43,17 +58,17 @@
                   </span>
                 </td>
                 <td class="text-right">
-                  <button type="button" class="btn btn-secondary btn-outline btn-sm" click.trigger="navigateToDashboard(dashboard)">
+                  <button type="button" class="btn btn-default primary-hover btn-outline btn-sm" click.trigger="navigateToDashboard(dashboard)">
                     <i class="fas fa-folder-open"></i>
                   </button>
-                  <button type="button" class="btn btn-danger btn-outline btn-sm" click.trigger="removeDashboard(dashboard.id)">
+                  <button type="button" class="btn btn-default danger-hover btn-outline btn-sm" click.trigger="removeDashboard(dashboard.id)">
                     <i class="fas fa-trash"></i>
                   </button>
                 </td>
               </tr>
               <tr if.bind="!dashboards">
-                <td colspan="4" class="text-center">
-                  You do not have any stored dashboards.
+                <td colspan="3" class="text-center text-secondary" style="padding: 1rem">
+                  You do not have any stored dashboards!
                 </td>
               </tr>
             </tbody>
@@ -62,25 +77,38 @@
       </panel>
     </div>
     <div else>
-      <div class="card-container">
-        <div class="card-tile" repeat.for="dashboard of dashboards" if.bind="dashboard">
-          ${dashboard.content.title ? dashboard.content.title : 'unknown'}
+      <div class="card-container" if.bind="dashboards">
+        <div 
+          class="card-tile"
+          title.bind="dashboard.content.title ? dashboard.content.title : 'unknown'"
+          repeat.for="dashboard of dashboards" 
+          if.bind="dashboard"
+        >
+          <div class="card-header" click.trigger="navigateToDashboard(dashboard)">
+            ${(dashboard.content.title ? dashboard.content.title : 'unknown') | truncateString:60 }
+          </div>
+          <div class="card-body" click.trigger="navigateToDashboard(dashboard)">
+            <span class="text-small text-secondary" if.bind="dashboard.content.description">${dashboard.content.description | truncateString}</span>
+            <span class="text-small text-secondary" else>No description given</span>
+          </div>
+          <div class="card-footer">
+            <div class="text-truncate">
+              <span class="text-small text-secondary">
+                ${dashboard.createdAt | timeAgo }
+              </span>
+            </div>
+            <div class="card-actions">
+              <button type="button" class="btn btn-default primary-hover btn-outline btn-sm" click.trigger="navigateToDashboard(dashboard)">
+                <i class="fas fa-folder-open"></i>
+              </button>
+              <button type="button" class="btn btn-default danger-hover btn-outline btn-sm" click.trigger="removeDashboard(dashboard.id)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
         </div> 
-        <div class="card-tile blue-gradient">
-          <div class="card-body">
-            <div class="hero-icon">
-              <i class="fa fa-upload"></i>
-            </div>
-          </div>
-        </div>
-        <div class="card-tile green-gradient">
-          <div class="card-body">
-            <div class="hero-icon">
-              <i class="fa fa-plus"></i>
-            </div>
-          </div>
-        </div>  
       </div>
     </div>
   </section>
+
 </template>

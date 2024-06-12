@@ -79,7 +79,7 @@
 
     &.btn-default {
       background-color: transparent;
-      color: $gray-800;
+      color: var(--text-secondary);
       box-shadow: none;
 
       &:hover {
@@ -91,6 +91,24 @@
           color: $gray-700 !important;
           background-color: transparent;
         }
+      }
+    }
+
+    &.primary-hover {
+      &:hover {
+        background-color: $green;
+      }
+    }
+
+    &.secondary-hover {
+      &:hover {
+        background-color: $blue;
+      }
+    }
+
+    &.danger-hover {
+      &:hover {
+        background-color: $red;
       }
     }
   }

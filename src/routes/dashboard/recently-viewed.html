@@ -2,14 +2,13 @@
   <table class="table table-overflow">
     <thead>
       <tr>
-        <th style="width: 1rem;"></th>
         <th>Title</th>
         <th>Date</th>
+        <th style="width: 6rem;"></th>
       </tr>
     </thead>
     <tbody>
       <tr repeat.for="dashboard of data" if.bind="data">
-        <td class="text-secondary">${$index + 1}.</td>
         <td class="text-truncate">
           <div class="ellipsis">
             <a route-href="route: dashboard-viewer; params.bind: { id: dashboard.id, gistId: dashboard.gistId }">
@@ -26,6 +25,12 @@
           <span class="text-small text-secondary">
             ${dashboard.updatedAt | dateTime }
           </span>
+        </td>
+        <td class="text-right">
+          <a class="btn btn-secondary btn-outline btn-sm" 
+            route-href="route: dashboard-viewer; params.bind: { id: dashboard.id, gistId: dashboard.gistId }">
+            <i class="fas fa-folder-open"></i>
+          </a>
         </td>
       </tr>
       <tr if.bind="!data">

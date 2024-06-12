@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   grid-gap: 1rem;
+  margin-bottom: 1rem;
 
   .card-tile {
     max-width: 32rem;
@@ -20,22 +21,67 @@
 
     .card-body {
       margin: auto;
+      width: 100%;
+      height: 100%;
+      padding: 0.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+
+      &.v-center {
+        justify-content: center;
+      }
 
       .hero-icon {
         font-size: 3rem;
+        text-align: center;
       }
     }
 
-    &.blue-gradient {
-      color: $white;
-      background-image: linear-gradient(to right top, #614dff, #6d5bfd, #7969fa, #8476f7, #8f83f4);
+    .card-header {
+      width: 100%;
+      height: 7.5rem;
+      padding: 1rem;
+      font-size: 0.85rem;
+      font-weight: bold;
     }
 
-    &.green-gradient {
-      color: $white;
-      background-image: linear-gradient(to right top, #06d198, #05c992, #03c28c, #01ba86, #00b380);
-    }
+    .card-footer {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1rem;
+      font-weight: bold;
+      border-bottom-left-radius: 0.3rem;
+      border-bottom-right-radius: 0.3rem;
+      background-color: var(--table-background);
 
+      &.purple-gradient {
+        color: $white;
+        background-image: linear-gradient(to right top, #614dff, #6d5bfd, #7969fa, #8476f7, #8f83f4);
+        
+      }
+  
+      &.green-gradient {
+        color: $white;
+        background-image: linear-gradient(to right top, #06d198, #05c992, #03c28c, #01ba86, #00b380);
+      }
+
+      &.blue-gradient {
+        color: $white;
+        background-image: linear-gradient(to right top, #009afa, #0092ed, #008ae0, #0083d4, #007bc7);
+      }
+
+      &.orange-gradient {
+        color: $white;
+        background-image: linear-gradient(to right top, #ff7752, #ff6c44, #ff6035, #ff5325, #ff4512);
+      }
+
+      &.red-gradient {
+        color: $white;
+        background-image: linear-gradient(to right top, #c70038, #d3003c, #e0003f, #ec0043, #f90046);
+      }
+    }
   }
 }
 

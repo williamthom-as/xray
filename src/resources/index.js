@@ -10,6 +10,7 @@ export function configure(config) {
     './value-converters/filter-by.js',
     './value-converters/date.js',
     './value-converters/date-time.js',
+    './value-converters/truncate-string.js',
     './elements/horizontal-nav',
     './elements/parent',
     './elements/panel',
@@ -23,6 +24,6 @@ export function configure(config) {
     './elements/logo',
     './elements/loading-indicator',
     './elements/page-header',
-    './elements/dropdown-menu'
+    './elements/dropdown-menu',
   ]);
 }

@@ -1,12 +1,12 @@
 <template>
   <spinner if.bind="isProcessing"></spinner>
-  <div if.bind="view == 'table1'">
+  <div>
     <table class="table table-overflow" if.bind="dashboards">
       <thead>
         <tr>
           <th>Title</th>
           <th>Date</th>
-          <th></th>
+          <th style="width: 6rem;"></th>
         </tr>
       </thead>
       <tbody>
@@ -44,19 +44,5 @@
         </tr>
       </tbody>
     </table>
-  </div>
-  <div else>
-    <div class="card-container">
-      <div class="card-tile"></div>
-      <div class="card-tile"></div>
-      <div class="card-tile"></div>
-      <div class="card-tile"></div>
-      <div class="card-tile"></div>
-      <div class="card-tile"></div>
-      <div class="card-tile"></div>
-      <div class="card-tile"></div>
-      <div class="card-tile"></div>
-      <div class="card-tile"></div>
-    </div>
   </div>
 </template>

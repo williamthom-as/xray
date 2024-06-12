@@ -2,30 +2,76 @@
   <require from="./dashboards"></require>
   <page-header title="Overview" description="Get started here" show-home.bind="false">
     <div slot="actions">
-      <button class="btn btn-secondary btn-sm" click.delegate="add()">Open</button>
-      <button class="btn btn-primary btn-sm" click.delegate="add()">Create</button>
+      <button class="btn btn-secondary btn-sm" click.trigger="add()">
+        <i class="fas fa-download"></i> Add
+      </button>
+      <button class="btn btn-primary btn-sm" click.trigger="add()">
+        <i class="fas fa-plus"></i> Create
+      </button>
     </div>
   </page-header>
   <div class="row">
     <div class="col">
-      <panel>
-        <div slot="header">
-          <div class="title">Welcome to Cure Viz!</div>
-        </div>
-        <div slot="body">
-          <div class="mb-1">
-            <strong>Cure Viz</strong> is an online tool for viewing, creating and sharing interactive dashboards without having to sign up.
-          </div>
-          <div class="mb-1">
-            To get started, either add a dashboard template or try your hand at creating one.
-          </div>
-        </div>
-      </panel>
+      <dashboards></dashboards>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <dashboards></dashboards>
+      <div class="section-header">
+        <h4>Actions</h4>
+      </div>
+      <div class="card-container">
+        <div class="card-tile blue-gradient">
+          <div class="card-body v-center" click.trigger="add()">
+            <div class="hero-icon">
+              <i class="fa fa-download"></i>
+            </div>
+          </div>
+          <div class="card-footer purple-gradient">
+            Add
+          </div>
+        </div>
+        <div class="card-tile">
+          <div class="card-body v-center">
+            <div class="hero-icon">
+              <i class="fa fa-plus"></i>
+            </div>
+          </div>
+          <div class="card-footer blue-gradient">
+            Create
+          </div>
+        </div>
+        <div class="card-tile">
+          <div class="card-body v-center">
+            <div class="hero-icon">
+              <i class="fa fa-question-circle"></i>
+            </div>
+          </div>
+          <div class="card-footer green-gradient">
+            Help
+          </div>
+        </div>
+        <div class="card-tile">
+          <div class="card-body v-center">
+            <div class="hero-icon">
+              <i class="fa fa-keyboard"></i>
+            </div>
+          </div>
+          <div class="card-footer orange-gradient">
+            Shortcuts
+          </div>
+        </div>
+        <div class="card-tile">
+          <div class="card-body v-center">
+            <div class="hero-icon">
+              <i class="fa fa-wrench"></i>
+            </div>
+          </div>
+          <div class="card-footer red-gradient">
+            Customise
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
