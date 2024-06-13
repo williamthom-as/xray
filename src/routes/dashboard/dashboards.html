@@ -1,16 +1,29 @@
 <template>
   <spinner if.bind="isProcessing"></spinner>
-  <div>
-    <table class="table table-overflow" if.bind="dashboards">
+  <div if.bind="dashboards">
+    <div class="filter-bar" style="width: 24rem; margin-bottom: 1.5rem;">
+      <validatable-field
+        placeholder="Search ..."
+        value.bind="filter & debounce:200"
+        type="text">
+      </validatable-field>
+    </div>
+    <table class="table table-overflow">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Date</th>
+          <th class="sortable" click.trigger="sort('content.title')">
+            Title
+            <i class="fas fa-caret-${sortAsc ? 'up' : 'down'}" if.bind="sortableColumn == 'content.title'"></i>
+          </th>
+          <th class="sortable" click.trigger="sort('createdAt')">
+            Date
+            <i class="fas fa-caret-${sortAsc ? 'up' : 'down'}" if.bind="sortableColumn == 'createdAt'"></i>
+          </th>
           <th style="width: 6rem;"></th>
         </tr>
       </thead>
       <tbody>
-        <tr repeat.for="dashboard of dashboards" if.bind="dashboard">
+        <tr repeat.for="dashboard of pagedResult" if.bind="dashboard">
           <td class="text-truncate">
             <div class="ellipsis">
               <a route-href="route: dashboard-viewer; params.bind: { id: dashboard.id }">
@@ -44,5 +57,18 @@
         </tr>
       </tbody>
     </table>
+    <div class="pagination-footer mb-1">
+      <div class="actions-tray">
+        <button type="button" class="btn btn-default primary-hover btn-outline btn-sm" click.trigger="prevPage()" disabled.bind="!hasPrevPage">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button type="button" class="btn btn-default primary-hover btn-outline btn-sm" click.trigger="nextPage()" disabled.bind="!hasNextPage">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      <div class="pagination-stats">
+        Showing ${offset + 1} - ${currentPageSize} of ${filteredRows.length}
+      </div>
+    </div>
   </div>
 </template>

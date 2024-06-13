@@ -1,4 +1,4 @@
-import {inject, bindable, computedFrom} from 'aurelia-framework';
+import {inject, computedFrom} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {Router} from 'aurelia-router';
 
@@ -9,7 +9,6 @@ export class Dashboards {
   dashboards = null;
 
   view = 'card';
-
   sortableColumn = 'createdAt';
   sortAsc = true;
   filter = null;
@@ -95,7 +94,6 @@ export class Dashboards {
 
     return filteredRows;
   }
-
 
   sort(name) {
     if (this.sortableColumn === name) {
