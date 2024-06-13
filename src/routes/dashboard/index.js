@@ -33,7 +33,7 @@ export class Index {
       )
     }
   }
-
+  
   getRecentlyViewed() {
     this.storageService.getRecentlyViewed()
       .then(viewed => {

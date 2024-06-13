@@ -1,8 +1,8 @@
 import {inject} from 'aurelia-framework';
-import {combo} from 'aurelia-combo';
 import {DialogService} from 'aurelia-dialog-lite';
 
 import {AddDashboardDialog} from "../../dialog/add_dashboard_dialog";
+import {keyboardShortcutsDialog} from '../../dialog/keyboard_shortcuts_dialog';
 
 @inject(DialogService, 'AjaxService', 'LocalStorageService')
 export class Index {
@@ -34,5 +34,18 @@ export class Index {
       )
     }
   }
+
+  keyboardShortcuts() {
+    this.dialogService.open({
+      viewModel: keyboardShortcutsDialog,
+      model: {},
+    }).then(
+      (_resp) => {},
+      () => {}
+    ).finally(
+      () => {}
+    )
+  }
+
 
 }

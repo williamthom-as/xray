@@ -4,7 +4,7 @@ export class RecentlyViewed {
   @bindable dashboards = null;
 
   sortableColumn = 'createdAt';
-  sortAsc = true;
+  sortAsc = false;
   filter = null;
 
   max = 10;

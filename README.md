@@ -11,6 +11,10 @@ Over time, more visualisation and layout options will be added, but for now the 
 - Table: filterable, paged
 - Markdown
 
+See an example dashboard below:
+
+![cure-viz](https://github.com/williamthom-as/cure-viz/assets/8381190/5552e178-0f43-4b58-9335-0f28456d7107)
+
 ### Why?
 
 Cure Viz was built as I wanted to take the results from analysing a CSV and visualise/share the insights quickly, at no cost. Yes, lots of other tools exist to do this. Yes, they are more powerful... but most are unnecessarily complex for my needs and either have a cost to use, or a cost to host your own. I don't want server and database bills, I want to generate the dashboard and share it in seconds. Currently, I use S3 to host and it's a few cents a month; why not use Gist or the query string to hold my data?
