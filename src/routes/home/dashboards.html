@@ -1,20 +1,5 @@
 <template>
   <spinner if.bind="isProcessing"></spinner>
-  <div if.bind="!dashboards">
-    <panel>
-      <div slot="header">
-        <div class="title">Welcome to Cure Viz!</div>
-      </div>
-      <div slot="body">
-        <p>
-          Your saved dashboards will appear here. 
-        </p>
-        <p>
-          First time visiting? Please click here to get started!
-        </p>
-      </div>
-    </panel>
-  </div>
   <div class="section-header">
     <h4>Stored Dashboards</h4>
     <div class="section-actions">
@@ -26,7 +11,14 @@
       </button>
     </div>
   </div>
-  <section>
+  <section if.bind="dashboards">
+    <div class="filter-bar" style="width: 24rem; margin-bottom: 1.5rem;">
+      <validatable-field
+        placeholder="Search ..."
+        value.bind="filter & debounce:200"
+        type="text">
+      </validatable-field>
+    </div>
     <div if.bind="view == 'table'">
       <panel>
         <div slot="body">
@@ -39,7 +31,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr repeat.for="dashboard of dashboards" if.bind="dashboard">
+              <tr repeat.for="dashboard of pagedResult" if.bind="dashboard">
                 <td class="text-truncate">
                   <div class="ellipsis">
                     <a route-href="route: dashboard-viewer; params.bind: { id: dashboard.id }">
@@ -80,8 +72,8 @@
       <div class="card-container" if.bind="dashboards">
         <div 
           class="card-tile"
+          repeat.for="dashboard of pagedResult"
           title.bind="dashboard.content.title ? dashboard.content.title : 'unknown'"
-          repeat.for="dashboard of dashboards" 
           if.bind="dashboard"
         >
           <div class="card-header" click.trigger="navigateToDashboard(dashboard)">
@@ -112,6 +104,18 @@
         You do not have any saved dashboards.
       </div>
     </div>
+    <div class="pagination-footer mb-1">
+      <div class="actions-tray">
+        <button type="button" class="btn btn-default primary-hover btn-outline btn-sm" click.trigger="prevPage()" disabled.bind="!hasPrevPage">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button type="button" class="btn btn-default primary-hover btn-outline btn-sm" click.trigger="nextPage()" disabled.bind="!hasNextPage">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      <div class="pagination-stats">
+        Showing ${offset + 1} - ${currentPageSize} of ${filteredRows.length}
+      </div>
+    </div>
   </section>
-
 </template>

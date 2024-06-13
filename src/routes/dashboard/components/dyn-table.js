@@ -25,7 +25,7 @@ export class DynTable {
       return 0;
     });
 
-    return sortedRows.slice(this.offset, this.offset + 10);
+    return sortedRows.slice(this.offset, this.offset + this.max);
   }
 
   sort(name) {

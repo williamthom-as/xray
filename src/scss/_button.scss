@@ -12,12 +12,13 @@
   transition: all 0.15s ease;
 
   &:disabled {
-    background-color: $gray-400 !important;
+    background-color: var(--page-background) !important;
     border-color: $gray-400 !important;
-    color: $gray-600 !important;
-    cursor: default !important;
+    color: var(--text-secondary) !important;
+    cursor: not-allowed !important;
 
     &:hover {
+      color: var(--text-secondary) !important;
       box-shadow: none;
     }
   }
