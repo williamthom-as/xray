@@ -10,11 +10,11 @@ export class Dashboards {
 
   view = 'card';
 
-  sortableColumn = null;
+  sortableColumn = 'createdAt';
   sortAsc = true;
   filter = null;
 
-  max = 5;
+  max = 10;
   offset = 0;
 
   constructor(router, ea, app, storageService) {
@@ -63,22 +63,30 @@ export class Dashboards {
 
   @computedFrom('sortableColumn', 'filteredRows', 'sortAsc', 'offset')
   get pagedResult() {
-    let filteredRows = this.filteredRows;
+    let sortedColumns = this.filteredRows;
 
-    // let idx = this.columns.findIndex(row => row.includes(this.sortableColumn));
-    // let sortedRows = filteredRows.sort((a, b) => {
-    //   if (a[idx] > b[idx]) return this.sortAsc ? 1 : -1;
-    //   if (a[idx] < b[idx]) return this.sortAsc ? -1 : 1;
-    //   return 0;
-    // });
+    if (this.sortableColumn) {
+      const sortKey = this.sortableColumn.split('.');
 
-    return filteredRows.slice(this.offset, this.offset + this.max);
+      sortedColumns = sortedColumns.sort((a, b) => {
+        const key_a = sortKey.reduce((o, k) => (o || {})[k], a);
+        const key_b = sortKey.reduce((o, k) => (o || {})[k], b);
+      
+        if (typeof key_a === 'string') {
+          return this.sortAsc ? key_a.localeCompare(key_b) : key_b.localeCompare(key_a);
+        } else if (typeof key_a === 'number') {
+          return this.sortAsc ? key_a - key_b : key_b - key_a;
+        }
+      });
+    }
+
+    return sortedColumns.slice(this.offset, this.offset + this.max);
   }
 
   @computedFrom('sortableColumn', 'dashboards', 'filter')
   get filteredRows() {
     let filteredRows = this.dashboards;
-    
+
     if (this.filter) {
       filteredRows = filteredRows.filter(
         r => r.content && r.content.title && r.content.title.toLowerCase().includes(this.filter)

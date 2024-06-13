@@ -25,8 +25,14 @@
           <table class="table table-overflow">
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Date</th>
+                <th class="sortable" click.trigger="sort('content.title')">
+                  Title
+                  <i class="fas fa-caret-${sortAsc ? 'up' : 'down'}" if.bind="sortableColumn == 'content.title'"></i>
+                </th>
+                <th class="sortable" click.trigger="sort('createdAt')">
+                  Date
+                  <i class="fas fa-caret-${sortAsc ? 'up' : 'down'}" if.bind="sortableColumn == 'createdAt'"></i>
+                </th>
                 <th></th>
               </tr>
             </thead>
