@@ -3,6 +3,7 @@ import {DialogService} from 'aurelia-dialog-lite';
 import {Router} from 'aurelia-router';
 import {generateRandomId} from '../../util/generate-random-id';
 import {StaticMessageDialog} from '../../dialog/static_message_dialog';
+import {ShareDashboardDialog} from '../../dialog/share_dashboard_dialog';
 import {ObjectViewerDialog} from '../../dialog/object_viewer_dialog';
 
 @inject(Router, DialogService, 'AppService', 'LocalStorageService', 'GithubService')
@@ -111,6 +112,20 @@ export class Viewer {
       model: {
         title: "Dashboard Template",
         object: this.dashboard
+      },
+    }).then(
+      (_resp) => {},
+      () => {}
+    );
+  }
+
+  shareTemplate() {
+    const encoded = btoa(JSON.stringify(this.dashboard.content));
+
+    this.dialogService.open({
+      viewModel: ShareDashboardDialog,
+      model: {
+        encoded: encoded
       },
     }).then(
       (_resp) => {},

@@ -1,0 +1,28 @@
+<template>
+  <div class="modal">
+    <div class="modal-dialog">        
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            Share Dashboard
+          </div>
+        </div>
+        <div class="modal-body">
+          <validatable-field
+            placeholder="URL"
+            value.bind="urlString"
+            label="Share URL"
+            type="text">
+          </validatable-field>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-muted btn-y-padding" click.trigger="controller.cancel()">Close</button>
+          <button click.trigger="copy()" class="btn btn-primary">
+            <i class="fas fa-copy"></i> Copy
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
