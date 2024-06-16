@@ -39,6 +39,16 @@
         </button>
       </div>
     </page-header>
+    <div if.bind="remote">
+      <alert level="info">
+        <div class="mb-1">
+          <strong>
+            Note
+          </strong>
+        </div>
+        You are in read only mode for this dashboard. Please click the '<i class="fas fa-fw fa-save"></i>' icon in the top right to save it.
+      </alert>
+    </div>
     <section class="tile-container" if.bind="content.panels">
       <div class="tile ${panel.options.width_class ? panel.options.width_class : ''}" repeat.for="panel of content.panels">
         <panel

@@ -25,5 +25,6 @@ export function configure(config) {
     './elements/loading-indicator',
     './elements/page-header',
     './elements/dropdown-menu',
+    './elements/alert',
   ]);
 }

@@ -1,0 +1,15 @@
+<template>
+  <div class="alert alert-${level}" show.bind="!dismissed">
+    <div class="alert-content">
+      <div class="alert-icon">
+        <i class="fa fa-info-circle"></i>
+      </div>
+      <div class="alert-message">
+        <slot></slot>
+      </div>
+    </div>
+    <div class="alert-dismissable" click.trigger="dismissed = true">
+      <i class="fa fa-times"></i>
+    </div>
+  </div>
+</template>

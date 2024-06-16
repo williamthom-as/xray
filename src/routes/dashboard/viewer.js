@@ -12,6 +12,7 @@ export class Viewer {
   @bindable content = null;
 
   isProcessing = false;
+  remote = false;
 
   constructor(router, dialogService, appService, storageService, githubService) {
     this.router = router;
@@ -133,6 +134,7 @@ export class Viewer {
 
   loadDashboardFromGist(gistId) {
     this.isProcessing = true;
+    this.remote = true;
 
     this.dashboard = {
       id: 'remote',
@@ -159,6 +161,7 @@ export class Viewer {
 
   loadDashboardFromEncoded(encoded) {
     this.isProcessing = true;
+    this.remote = true;
 
     this.dashboard = {
       id: 'remote',

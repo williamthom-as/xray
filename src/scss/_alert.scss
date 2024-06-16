@@ -1,17 +1,42 @@
 .alert {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
+  justify-content: space-between;
   color: $gray-200;
   background-color: $blue;
   border-radius: 0.3rem;
   padding: 1rem;
+  align-items: center;
 
   &.text-center {
     justify-content: center;
   }
 
-  &.alert-danger {
+  &.alert-error {
     color: $gray-200;
     background-color: $red;
+  }
+
+  .alert-content {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
+
+    .alert-icon {
+      padding: 1rem;
+      width: 4rem;
+      font-size: 1.4rem;
+    }
+  
+    .alert-message {
+      
+    }
+  }
+
+  .alert-dismissable {
+    padding: 1rem;
+    cursor: pointer;
   }
 }
