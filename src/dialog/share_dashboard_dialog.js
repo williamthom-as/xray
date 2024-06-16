@@ -12,9 +12,15 @@ export class ShareDashboardDialog {
   }
 
   activate(model) {
-    this.encoded = model.encoded;
     this.hostAddr = window.location.origin;
-    this.urlString = `${this.hostAddr}/dashboard/viewer/remote?encoded=${this.encoded}`;
+    this.dashboard = model.dashboard;
+
+    if (this.dashboard.gistId) {
+      this.urlString = `${this.hostAddr}/dashboard/viewer/remote?gistId=${this.dashboard.gistId}`;
+    } else {
+      const encoded = btoa(JSON.stringify(this.dashboard.content));
+      this.urlString = `${this.hostAddr}/dashboard/viewer/remote?encoded=${encoded}`;
+    }
   }
 
   copy() {

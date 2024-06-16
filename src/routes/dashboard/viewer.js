@@ -120,12 +120,10 @@ export class Viewer {
   }
 
   shareTemplate() {
-    const encoded = btoa(JSON.stringify(this.dashboard.content));
-
     this.dialogService.open({
       viewModel: ShareDashboardDialog,
       model: {
-        encoded: encoded
+        dashboard: this.dashboard
       },
     }).then(
       (_resp) => {},
