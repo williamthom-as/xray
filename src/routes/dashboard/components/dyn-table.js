@@ -15,7 +15,9 @@ export class DynTable {
   get pagedResult() {
     let filteredRows = this.rows;
     if (this.filter) {
-      filteredRows = filteredRows.filter(r => r.some(c => String(c).includes(this.filter)));
+      filteredRows = filteredRows.filter(
+        r => r.some(c => String(c).includes(this.filter))
+      );
     }
 
     let idx = this.columns.findIndex(row => row.includes(this.sortableColumn));

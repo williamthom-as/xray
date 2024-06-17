@@ -82,13 +82,15 @@ export class Dashboards {
     return sortedColumns.slice(this.offset, this.offset + this.max);
   }
 
-  @computedFrom('sortableColumn', 'dashboards', 'filter')
+  @computedFrom('dashboards', 'filter')
   get filteredRows() {
     let filteredRows = this.dashboards;
 
     if (this.filter) {
+      const needle = this.filter.toLowerCase();
+      
       filteredRows = filteredRows.filter(
-        r => r.content && r.content.title && r.content.title.toLowerCase().includes(this.filter)
+        r => r.content && r.content.title && r.content.title.toLowerCase().includes(needle)
       );
     }
 

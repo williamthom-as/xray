@@ -67,7 +67,12 @@
         </button>
       </div>
       <div class="pagination-stats">
-        Showing ${offset + 1} - ${currentPageSize} of ${filteredRows.length}
+        <span if.bind="filteredRows.length > 0">
+          Showing ${offset + 1} - ${currentPageSize} of ${filteredRows.length}
+        </span>
+        <span else>
+          No results found
+        </span>
       </div>
     </div>
   </div>

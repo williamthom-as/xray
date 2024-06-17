@@ -6,7 +6,7 @@ $double-tile-min-width: 40rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: ($tile-margin) (-$tile-margin + 0.25rem) 0;
+  margin: ($tile-margin + 0.5rem) (-$tile-margin + 0.25rem) 0;
   padding-bottom: calc($tile-margin * 2);
 
   .tile {

@@ -25,9 +25,10 @@
     flex-grow: 1;
 
     .alert-icon {
-      padding: 1rem;
+      padding: 1rem 1rem 1rem 0;
       width: 4rem;
       font-size: 1.4rem;
+      text-align: center;
     }
   
     .alert-message {
