@@ -8,6 +8,13 @@
           </div>
         </div>
         <div class="modal-body">
+          <div class="mb-1">
+            Sharing a dashboard can be done via an encoded URL string or Gist. 
+          </div>
+          <div class="mb-1">
+            Alternatively, you can download a copy of the template and share it manually. 
+          </div>
+
           <validatable-field
             placeholder="URL"
             value.bind="urlString"
@@ -15,12 +22,25 @@
             type="text">
           </validatable-field>
 
+          <validatable-field
+            placeholder="JSON Crush"
+            value.bind="jsonCrushStr"
+            label="JSON Crush Share URL"
+            type="text"
+            if.bind="jsonCrushStr"
+            help-text="Use this if you have a big dashboard">
+          </validatable-field>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-muted btn-y-padding" click.trigger="controller.cancel()">Close</button>
-          <button click.trigger="copy()" class="btn btn-primary">
-            <i class="fas fa-copy"></i> Copy
-          </button>
+          <div>
+            <button click.trigger="downloadTemplate()" class="btn btn-primary">
+              <i class="fas fa-download"></i> Download
+            </button>
+            <button click.trigger="copy()" class="btn btn-primary">
+              <i class="fas fa-copy"></i> Copy
+            </button>
+          </div>
         </div>
       </div>
     </div>
