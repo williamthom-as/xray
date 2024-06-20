@@ -1,16 +1,19 @@
 import {inject} from 'aurelia-framework';
 import {DialogService} from 'aurelia-dialog-lite';
+import {Router} from 'aurelia-router';
 
 import {AddDashboardDialog} from "../../dialog/add_dashboard_dialog";
-import {keyboardShortcutsDialog} from '../../dialog/keyboard_shortcuts_dialog';
+import {KeyboardShortcutsDialog} from '../../dialog/keyboard_shortcuts_dialog';
+import {CreateDashboardDialog} from '../../dialog/create_dashboard_dialog';
 
-@inject(DialogService, 'AjaxService', 'LocalStorageService')
+@inject(Router, DialogService, 'AjaxService', 'LocalStorageService', )
 export class Index {
 
   modalOpen = false;
   showHome = false;
 
-  constructor(dialogService, ajax, storageService) {
+  constructor(router, dialogService, ajax, storageService) {
+    this.router = router;
     this.dialogService = dialogService;
     this.storageService = storageService;
     this.ajax = ajax;
@@ -37,7 +40,7 @@ export class Index {
 
   keyboardShortcuts() {
     this.dialogService.open({
-      viewModel: keyboardShortcutsDialog,
+      viewModel: KeyboardShortcutsDialog,
       model: {},
     }).then(
       (_resp) => {},
@@ -47,5 +50,20 @@ export class Index {
     )
   }
 
+  create() {
+    this.dialogService.open({
+      viewModel: CreateDashboardDialog,
+      model: {
+        title: "",
+        description: "",
+        author: ""
+      }
+    }).then(
+      (resp) => {
+        this.router.navigateToRoute('dashboard-builder', { id: resp.id });
+      },
+      () => {}
+    )
+  }
 
 }

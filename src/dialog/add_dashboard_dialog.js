@@ -96,7 +96,7 @@ export class AddDashboardDialog {
           this.model.content = JSON.parse(dataContents);
         })
         .catch(() => {
-          throw new Error('File is invalid')
+          throw new Error('File is invalid');
         });
     } else {
       throw new Error('Invalid source');
@@ -109,7 +109,7 @@ export class AddDashboardDialog {
         this.app.showInfo('Success!', 'Your dashboard has been added!');
         this.ea.publish('dashboard-added', this.model);
 
-        this.controller.ok()
+        this.controller.ok();
       })
       .catch(error => {
         this.isProcessing = false;

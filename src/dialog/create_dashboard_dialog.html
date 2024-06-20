@@ -1,0 +1,44 @@
+<template>
+  <div class="modal">
+    <div class="modal-dialog">        
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            Create New Dashboard
+          </div>
+        </div>
+        <div class="modal-body">
+          <validatable-field
+            placeholder="Title"
+            value.bind="model.title"
+            errors.bind="errors.title"
+            label="Title"
+            type="text"
+          >
+          </validatable-field>
+          <validatable-field
+            placeholder="Author"
+            value.bind="model.author"
+            errors.bind="errors.author"
+            label="Author"
+            type="text"
+          >
+          </validatable-field>
+          <validatable-field
+            placeholder="Description"
+            value.bind="model.description"
+            errors.bind="errors.description"
+            label="Description"
+            type="text"
+          >
+          </validatable-field>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-muted btn-y-padding" click.trigger="controller.cancel()">Close</button>
+          <button type="button" class="btn btn-primary btn-y-padding" click.trigger="submit()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
