@@ -1,5 +1,20 @@
 <template>
+  <spinner if.bind="isProcessing"></spinner>
   <div if.bind="dashboard">
-    ${dashboard.content.title}
+    <div class="page-header">
+      <div class="title">
+        <span contenteditable="true" textcontent.bind="dashboard.content.title"></span>
+        <div class="text-small text-secondary" contenteditable="true" textcontent.bind="dashboard.content.description">
+          
+        </div>
+      </div>
+      <div class="actions">
+        <div slot="actions">
+          <button class="btn btn-sm btn-primary au-target" click.trigger="save()" title="Save Dashboard">
+            <i class="fas fa-fw fa-save"></i>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>

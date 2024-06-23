@@ -2,10 +2,13 @@ import {inject, bindable} from 'aurelia-framework';
 import {DialogService} from 'aurelia-dialog-lite';
 import {Router} from 'aurelia-router';
 
+import _ from 'lodash';
+
 @inject(Router, DialogService, 'AppService', 'LocalStorageService')
 export class Index {
 
   @bindable dashboard = null;
+  originalDashboard = null;
 
   isProcessing = false;
 
@@ -18,15 +21,25 @@ export class Index {
 
   activate(params) {
     this.id = params.id;
+
     this.getDashboard();
   }
 
-  getDashboard(force = false) {
-    this.isProcessing = true;
+  canDeactivate() {
+    if (this.originalDashboard != null && !_.isEqual(this.dashboard, this.originalDashboard)) {
+      return confirm('You have unsaved changes. Are you sure you want to leave?');
+    }
 
+    return true;
+  }
+
+  getDashboard() {
+    this.isProcessing = true;
     this.storageService.getDashboard(this.id)
       .then(dashboard => {
         this.dashboard = dashboard;
+        this.originalDashboard = _.cloneDeep(dashboard);
+
         this.isProcessing = false;
       })
       .catch(error => {
@@ -34,4 +47,9 @@ export class Index {
         this.app.showError('Problem retrieving Dashboard', error);
       });
   }
+
+  save() {
+    console.log(this.dashboard, this.originalDashboard);
+  }
+
 }

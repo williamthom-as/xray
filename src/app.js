@@ -56,14 +56,15 @@ export class App {
         highlight: 'dashboards'
       }
     },{
-      route: 'dashboards/builder/:id',
+      route: 'dashboard/builder/:id',
       moduleId: './routes/builder/index',
       name: 'dashboard-builder',
       title: 'Dashboard Builder',
       nav: false,
       settings: {
         icon: 'fas fa-image',
-        description: 'Build dashboards'
+        description: 'Build dashboards',
+        highlight: 'dashboards'
       }
     },{
       route: 'settings',
