@@ -81,6 +81,22 @@ export class Index {
     )
   }
 
+  editPanel(index) {
+    this.dialogService.open({
+      viewModel: SaveWidgetDialog,
+      model: this.dashboard.content.panels[index],
+    }).then(
+      (resp) => {
+        this.dashboard.content.panels[index] = resp;
+      },
+      () => {}
+    )
+  }
+
+  deletePanel(index) {
+    this.dashboard.content.panels.splice(index, 1);
+  }
+
   @computedFrom('dashboard.content.title', 'dashboard.content.description')
   get errors() {
     return this.validator(this.dashboard.content) || {};

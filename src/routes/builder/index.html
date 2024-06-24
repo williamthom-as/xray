@@ -34,5 +34,29 @@
         </button>
       </div>
     </page-header>
+    <section class="tile-container" if.bind="dashboard.content.panels">
+      <div 
+        class="tile ${panel.options.width_class ? panel.options.width_class : ''}" 
+        repeat.for="panel of dashboard.content.panels"
+      >
+        <panel
+          action-one-function.call="editPanel($index)"
+          action-one-icon="fa-info-circle"
+          action-two-function.call="editPanel($index)"
+          action-two-icon="fa-edit"
+          action-three-function.call="deletePanel($index)"
+          action-three-icon="fa-trash"
+        >
+          <div slot="header">
+            <div class="title">${panel.title}</div>
+          </div>
+          <div slot="body">
+            <div class="text-small text-secondary" style="margin: 1rem 0" if.bind="panel.description">
+              ${panel.description}
+            </div>
+          </div>
+        </panel>
+      </div>
+    </section>
   </div>
 </template>

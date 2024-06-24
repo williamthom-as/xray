@@ -10,6 +10,9 @@ export class Panel {
   @bindable actionTwoFunction = null;
   @bindable actionTwoIcon = null;
 
+  @bindable actionThreeFunction = null;
+  @bindable actionThreeIcon = null;
+
   panelCss() {
     if (this.maxHeight) {
       return `max-height: ${this.maxHeight}rem;`;
