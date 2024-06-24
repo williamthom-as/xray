@@ -1,0 +1,13 @@
+<template>
+  <div class="form-group">
+      <label class="au-animate ${errors ? 'is-invalid' : ''}">${label}</label>
+      <div>
+        <textarea name="${name}" class="form-control ${errors ? 'is-invalid' : ''}" placeholder="${placeholder}" value.bind="value">
+        </textarea>
+      </div>
+      <div if.bind="helpText"><small>${helpText}</small></div>
+      <div class="errors" if.bind="errors">
+        <span class="text-danger au-animate" repeat.for="error of errors">${error}<br if.bind="!$last"></span>
+      </div>
+  </div>
+</template>

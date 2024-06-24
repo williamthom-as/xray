@@ -3,10 +3,8 @@ import {DialogController} from 'aurelia-dialog-lite';
 import {Router} from 'aurelia-router';
 import {EventAggregator} from 'aurelia-event-aggregator';
 
-import {generateRandomId} from '../util/generate-random-id';
-
-@inject(Router, DialogController, EventAggregator, 'Validation', 'AppService', 'LocalStorageService', 'GithubService')
-export class CreateDashboardDialog {
+@inject(Router, DialogController, EventAggregator, 'Validation', 'AppService')
+export class SaveWidgetDialog {
 
   isProcessing = false;
   triedOnce = false;
@@ -19,15 +17,19 @@ export class CreateDashboardDialog {
     this.app = app;
     this.storageService = storageService;
 
+    this.transformOptions = this.transformOptions.bind(this);
+
     this.validator = validation.generateValidator({
-      title: ['mandatory', {validate: 'string', minLength: 2, maxLength: 96}],
-      description: ['notMandatory', {validate: 'string', minLength: 2, maxLength: 48}],
-      author: ['mandatory', {validate: 'string', minLength: 2, maxLength: 48}]
+      title: ['mandatory', {validate: 'string', minLength: 2, maxLength: 64}],
+      widget_type: ['mandatory']
     });
   }
 
   activate(model) {
     this.model = model;
+    this.subscribers = [
+      this.ea.subscribe(this.seed + "-remove", this.transformOptions)
+    ]
   }
 
   submit() {
@@ -41,22 +43,10 @@ export class CreateDashboardDialog {
 
     this.isProcessing = true;
 
-    let dashboard = {
-      id: generateRandomId(),
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      content: this.model
-    }
-  
-    this.storageService.setDashboard(dashboard);
-
-    this.app.showInfo('Success!', 'Your dashboard has been added!');
-    this.ea.publish('dashboard-added', dashboard);
-
-    this.controller.ok(dashboard);
+    this.controller.ok(this.model);
   }
 
-  @computedFrom('triedOnce','model.title', 'model.author', 'model.description')
+  @computedFrom('triedOnce','model.title')
   get errors() {
     if (!this.triedOnce) return {};
     return this.validator(this.model) || {};
@@ -65,5 +55,11 @@ export class CreateDashboardDialog {
   @computedFrom('errors')
   get hasError() {
     return !_.isEmpty(this.errors);
-  }  
+  }
+
+  transformOptions(o, v) {
+    if (v !== null && o !== v) {
+      this.model.data = {};
+    }
+  }
 }

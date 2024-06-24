@@ -26,12 +26,13 @@
     </div>
   </div>
   <div class="page-header">
-    <div class="title">
+    <div class="title" if.bind="title">
       ${title || 'Unknown'}
       <div class="text-small text-secondary" if.bind="description">
         ${description}
       </div>
     </div>
+    <slot name="title" if.bind="!title"></slot>
     <div class="actions">
       <slot name="actions"></div>
     </div>

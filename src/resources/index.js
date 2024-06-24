@@ -15,6 +15,7 @@ export function configure(config) {
     './elements/parent',
     './elements/panel',
     './elements/validatable-field',
+    './elements/validatable-textarea',
     './elements/validatable-select',
     './elements/validatable-select2',
     './elements/toasts',

@@ -1,0 +1,37 @@
+<template>
+  <require from="./types/type"></require>
+  <require from="./types/table-form"></require>
+
+  <div class="modal">
+    <div class="modal-dialog">        
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            Add New Widget
+          </div>
+        </div>
+        <div class="modal-body">
+          <validatable-field
+            placeholder="Enter a panel title"
+            value.bind="model.title"
+            errors.bind="errors.title"
+            label="Panel Title"
+            type="text"
+          >
+          </validatable-field>
+          
+          <type type.bind="model.widget_type" if.bind="model" seed.bind="seed"></type>
+          <div>
+            <!-- <markdown data.bind="model.data" if.bind="model.widget_type == 'markdown'"></markdown> -->
+            <table-form data.bind="model.data" if.bind="model.widget_type == 'table'"></table-form>
+          </div>  
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-muted btn-y-padding" click.trigger="controller.cancel()">Close</button>
+          <button type="button" class="btn btn-primary btn-y-padding" click.trigger="submit()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

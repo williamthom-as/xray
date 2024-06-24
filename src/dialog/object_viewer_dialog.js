@@ -23,8 +23,9 @@ export class ObjectViewerDialog {
   }
 
   downloadTemplate() {
+    const json = JSON.stringify(this.object.content, null, 2);
     const title = this.title.toLowerCase().replace(/ /g, '_')
-    const blob = new Blob([this.json], { type: 'application/json' });
+    const blob = new Blob([json], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     
     const a = Object.assign(
