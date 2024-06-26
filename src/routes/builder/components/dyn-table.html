@@ -6,8 +6,8 @@
       type="text">
     </validatable-field>
   </div>
-  <div class="table-container" if.bind="rows">
-    <table class="table table-overflow">
+  <div class="table-container">
+    <table class="table table-overflow" if.bind="rows">
       <thead>
         <tr>
           <th class="sortable" repeat.for="column of columns" click.trigger="sort(column)">
@@ -18,8 +18,6 @@
       </thead>
       <tbody>
         <tr repeat.for="row of pagedResult">
-          <!-- This works, but I don't want it yet... or do I? -->
-          <!-- <td repeat.for="value of row" innerHTML.bind="highlight(value)"></td> -->
           <td repeat.for="value of row">${value}</td>
         </tr>
       </tbody>
@@ -35,12 +33,7 @@
       </button>
     </div>
     <div class="pagination-stats">
-      <span if.bind="filteredRows.length > 0">
-        Showing ${offset + 1} - ${currentPageSize} of ${filteredRows.length}
-      </span>
-      <span else>
-        No results found
-      </span>
+      Showing ${offset + 1} - ${offset + max} of ${rows.length}
     </div>
   </div>
 </template>

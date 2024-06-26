@@ -14,4 +14,18 @@ export class TableForm {
       this.data.rows = lines.slice(1).map(line => line.split('\t'));
     }
   }
+
+  bind() {
+    if (!this.data.columns) {
+      this.data.columns = [];
+    } else {
+      
+    }
+
+    if (!this.data.rows) {
+      this.data.rows = [];
+    }
+
+    this.contents = this.data.columns.join('\t') + '\n' + this.data.rows.map(row => row.join('\t')).join('\n');
+  }
 }

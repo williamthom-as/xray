@@ -88,7 +88,7 @@ export class Dashboards {
 
     if (this.filter) {
       filteredRows = filteredRows.filter(
-        r => r.content && r.content.title && r.content.title.toLowerCase().includes(this.filter)
+        r => r.content && r.content.title && r.content.title.toLowerCase().includes(this.filter.toLowerCase())
       );
     }
 

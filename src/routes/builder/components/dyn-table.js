@@ -11,33 +11,23 @@ export class DynTable {
   max = 10;
   offset = 0;
 
-  @computedFrom('sortableColumn', 'filteredRows', 'sortAsc', 'offset')
+  @computedFrom('sortableColumn', 'rows', 'sortAsc', 'offset', 'filter')
   get pagedResult() {
-    let sortedRows = this.filteredRows;
-
-    if (this.sortableColumn) {
-      let idx = this.columns.findIndex(row => row.includes(this.sortableColumn));
-      sortedRows = sortedRows.sort((a, b) => {
-        if (a[idx] > b[idx]) return this.sortAsc ? 1 : -1;
-        if (a[idx] < b[idx]) return this.sortAsc ? -1 : 1;
-        return 0;
-      });
-    }
-
-    return sortedRows.slice(this.offset, this.offset + this.max);
-  }
-
-  @computedFrom('sortableColumn', 'rows', 'filter')
-  get filteredRows() {
     let filteredRows = this.rows;
-
     if (this.filter) {
       filteredRows = filteredRows.filter(
-        r => r.some(c => String(c).toLowerCase().includes(this.filter.toLowerCase()))
+        r => r.some(c => String(c).includes(this.filter))
       );
     }
 
-    return filteredRows;
+    let idx = this.columns.findIndex(row => row.includes(this.sortableColumn));
+    let sortedRows = filteredRows.sort((a, b) => {
+      if (a[idx] > b[idx]) return this.sortAsc ? 1 : -1;
+      if (a[idx] < b[idx]) return this.sortAsc ? -1 : 1;
+      return 0;
+    });
+
+    return sortedRows.slice(this.offset, this.offset + this.max);
   }
 
   sort(name) {
@@ -70,19 +60,14 @@ export class DynTable {
     this.offset -= this.max;
   }
 
-  @computedFrom('offset', 'filteredRows')
+  @computedFrom('offset', 'rows')
   get hasNextPage() {
-    return (this.offset + this.max) < this.filteredRows.length;
+    return (this.offset + this.max) < this.rows.length;
   }
 
-  @computedFrom('offset')
+  @computedFrom('offset', 'rows')
   get hasPrevPage() {
     return this.offset > 0;
-  }
-
-  @computedFrom('offset', 'max', 'filteredRows')
-  get currentPageSize() {
-    return Math.min(this.filteredRows.length, (this.offset + this.max))
   }
 
   highlight(text) {

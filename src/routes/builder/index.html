@@ -1,4 +1,5 @@
 <template>
+  <require from="./components/dyn-table"></require>
   <spinner if.bind="isProcessing"></spinner>
   <div if.bind="dashboard">
     <page-header>
@@ -48,11 +49,14 @@
           action-three-icon="fa-trash"
         >
           <div slot="header">
-            <div class="title">${panel.title}</div>
+            <div class="title" contenteditable="true" textcontent.bind="panel.title"></div>
           </div>
           <div slot="body">
             <div class="text-small text-secondary" style="margin: 1rem 0" if.bind="panel.description">
               ${panel.description}
+            </div>
+            <div if.bind="panel.widget_type == 'table'">
+              <dyn-table rows.bind="panel.data.rows" columns.bind="panel.data.columns"></dyn-table>
             </div>
           </div>
         </panel>
