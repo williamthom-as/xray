@@ -5,6 +5,7 @@ import {generateRandomId} from '../../util/generate-random-id';
 import {StaticMessageDialog} from '../../dialog/static_message_dialog';
 import {ShareDashboardDialog} from '../../dialog/share_dashboard_dialog';
 import {ObjectViewerDialog} from '../../dialog/object_viewer_dialog';
+import JSONCrush from 'jsoncrush';
 
 @inject(Router, DialogService, 'AppService', 'LocalStorageService', 'GithubService')
 export class Viewer {
@@ -34,6 +35,11 @@ export class Viewer {
       if (params.encoded) {
         this.loadDashboardFromEncoded(params.encoded);
         return;
+      }
+
+      if (params.jsoncrush) {
+        this.loadDashboardFromJSONCrush(params.jsoncrush);
+        return
       }
 
       this.router.navigateToRoute('home');
@@ -182,6 +188,31 @@ export class Viewer {
 
     this.isProcessing = false;
   }
+
+  loadDashboardFromJSONCrush(encoded) {
+    this.isProcessing = true;
+    this.remote = true;
+
+    this.dashboard = {
+      id: 'remote',
+      from: 'text',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    try {
+      this.content = JSON.parse(JSONCrush.uncrush(encoded));
+      this.dashboard.content = this.content;
+    } catch (error) {
+      this.router.navigateToRoute('home');
+      this.app.showError('Problem decoding content', error);
+      
+      return
+    }
+
+    this.isProcessing = false;
+  }
+
 
   showDescription(panel) {
     this.dialogService.open({

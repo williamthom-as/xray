@@ -1,6 +1,7 @@
 import {inject, computedFrom} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {Router} from 'aurelia-router';
+ 
 
 @inject(Router, EventAggregator, 'AppService', 'LocalStorageService')
 export class Dashboards {
