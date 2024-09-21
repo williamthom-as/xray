@@ -20,7 +20,7 @@ export class App {
 
   configureRouter(config, router) {
     this.router = router;
-    config.title = "Cure Viz";
+    config.title = "XRay";
     config.options.pushState = true;
     config.options.root = '/';
 

@@ -1,6 +1,6 @@
-# Cure Viz
+# XRay
 
-Cure Viz is a simple web app for viewing and sharing dashboards that are built using a simple dashboard templating language built into Cure.
+XRay (formerly Cure Viz) is a simple web app for viewing and sharing dashboards that are built using a simple dashboard templating language built into Cure.
 
 Dashboards can be shared via query string(!), Gist, remotely hosted, or uploaded manually and can be temporarily viewed and/or persisted to local storage. This
 allows for no central server to be required, just host the web app, share your dashboard content and it is ready to go. Zero cost, zero logins, zero personal information.
@@ -17,11 +17,11 @@ See an example dashboard below:
 
 ### Why?
 
-Cure Viz was built as I wanted to take the results from analysing a CSV and visualise/share the insights quickly, at no cost. Yes, lots of other tools exist to do this. Yes, they are more powerful... but most are unnecessarily complex for my needs and either have a cost to use, or a cost to host your own. I don't want server and database bills, I want to generate the dashboard and share it in seconds. Currently, I use S3 to host and it's a few cents a month; why not use Gist or the query string to hold my data?
+XRay was built as I wanted to take the results from analysing a CSV and visualise/share the insights quickly, at no cost. Yes, lots of other tools exist to do this. Yes, they are more powerful... but most are unnecessarily complex for my needs and either have a cost to use, or a cost to host your own. I don't want server and database bills, I want to generate the dashboard and share it in seconds. Currently, I use S3 to host and it's a few cents a month; why not use Gist or the query string to hold my data?
 
 ### Templates
 
-[Cure](https://github.com/williamthom-as/cure) comes with built in support to export directly to Cure Viz, but any tool would work. The dashboard definition is just JSON, it's so simple you could even hand type one 😊. 
+[Cure](https://github.com/williamthom-as/cure) comes with built in support to export directly to XRay, but any tool would work. The dashboard definition is just JSON, it's so simple you could even hand type one 😊. 
 
 Note: I don't plan on writing another library to support X language. But, if you wanted to, it would be trivial. You can see the Ruby library [here](https://github.com/williamthom-as/cure/blob/main/lib/cure/viz/viz_base.rb), with example.
 
@@ -36,7 +36,7 @@ Some browsers have limits on query strings, so this is not a preferable option, 
 
 ## Templating
 
-As mentioned, Cure Viz uses a JSON-based format for describing dashboards. You can read more about it [here](https://github.com/williamthom-as/cure).
+As mentioned, XRay uses a JSON-based format for describing dashboards. You can read more about it [here](https://github.com/williamthom-as/cure).
 
 Alternatively, you can view an example dashboard [here](https://xyare.com/dashboard/viewer/remote?gistId=fbbcb4ba16e3483bc66156d6c8a8dcf8).
 
