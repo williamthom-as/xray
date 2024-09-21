@@ -1,6 +1,6 @@
 # XRay
 
-XRay (formerly Cure Viz) is a simple web app for viewing and sharing dashboards that are built using a simple dashboard templating language built into Cure.
+XRay (*formerly Cure Viz*) is a simple web app for viewing and sharing dashboards that are built using a simple dashboard templating language built into Cure.
 
 Dashboards can be shared via query string(!), Gist, remotely hosted, or uploaded manually and can be temporarily viewed and/or persisted to local storage. This
 allows for no central server to be required, just host the web app, share your dashboard content and it is ready to go. Zero cost, zero logins, zero personal information.
@@ -13,7 +13,7 @@ Over time, more visualisation and layout options will be added, but for now the 
 
 See an example dashboard below:
 
-![cure-viz](https://github.com/williamthom-as/cure-viz/assets/8381190/5552e178-0f43-4b58-9335-0f28456d7107)
+![xray-ui](https://github.com/user-attachments/assets/7ae86dd3-91a1-4636-ac19-5d15cefa45e0)
 
 ### Why?
 
